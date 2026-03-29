@@ -1,0 +1,9 @@
+Fix the following C++ program so it compiles with g++ -std=c++23. Focus on type errors and template syntax: fix type mismatches, template parameters, and generic code.
+
+Program:
+{program}
+
+Compiler stderr:
+{stderr}
+
+Output ONLY the fixed C++ code. No explanations, no markdown. Preserve templates and types where possible. The code must compile with -std=c++23 and must not require external files.

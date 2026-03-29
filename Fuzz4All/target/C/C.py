@@ -5,7 +5,7 @@ from typing import List, Union
 
 import torch
 
-from Fuzz4All.target.target import FResult, Target
+from Fuzz4All.target.target import FResult, Target, ValidationResult
 from Fuzz4All.util.Logger import LEVEL
 from Fuzz4All.util.util import comment_remover
 
@@ -161,15 +161,15 @@ class CTarget(Target):
 
         return FResult.SAFE, "its safe"
 
-    def validate_individual(self, filename) -> (FResult, str):
+    def validate_individual(self, filename) -> ValidationResult:
         fresult, msg = self.validate_compiler(self.target_name, filename)
         if fresult == FResult.SAFE:
-            return FResult.SAFE, "its safe"
+            return ValidationResult.from_legacy(FResult.SAFE, "its safe")
         elif fresult == FResult.ERROR:
-            return FResult.ERROR, f"{msg}"
+            return ValidationResult.from_legacy(FResult.ERROR, f"{msg}")
         elif fresult == FResult.TIMED_OUT:
-            return FResult.ERROR, "timed out"
+            return ValidationResult.from_legacy(FResult.ERROR, "timed out")
         elif fresult == FResult.FAILURE:
-            return FResult.FAILURE, f"{msg}"
+            return ValidationResult.from_legacy(FResult.FAILURE, f"{msg}")
         else:
-            return (FResult.TIMED_OUT,)
+            return ValidationResult.from_legacy(FResult.TIMED_OUT, str(msg))

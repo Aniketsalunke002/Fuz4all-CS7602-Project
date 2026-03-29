@@ -5,7 +5,7 @@ from pathlib import Path
 from re import search
 from typing import List, Union
 
-from Fuzz4All.target.target import FResult, Target
+from Fuzz4All.target.target import FResult, Target, ValidationResult
 from Fuzz4All.util.Logger import LEVEL
 from Fuzz4All.util.util import comment_remover
 
@@ -72,14 +72,14 @@ class JAVATarget(Target):
             self.CURRENT_TIME, public_class_name[0].split()[-1]
         )
 
-    def validate_individual(self, filename) -> (FResult, str):
+    def validate_individual(self, filename) -> ValidationResult:
         write_back_name = ""
         try:
             with open(filename, "r", encoding="utf-8") as f:
                 code = f.read()
                 write_back_name = self.determine_file_name(code)
                 self.write_back_file(code, write_back_name=write_back_name)
-        except:
+        except Exception:
             pass
 
         try:
@@ -105,10 +105,10 @@ class JAVATarget(Target):
                 ],
                 shell=True,
             )  # kill all tests thank you
-            return FResult.TIMED_OUT, "java"
+            return ValidationResult.from_legacy(FResult.TIMED_OUT, "java")
         if exit_code.returncode == 1:
-            return FResult.FAILURE, exit_code.stderr
+            return ValidationResult.from_legacy(FResult.FAILURE, exit_code.stderr)
         elif exit_code.returncode == 0:
-            return FResult.SAFE, "its safe"
+            return ValidationResult.from_legacy(FResult.SAFE, "its safe")
         else:
-            return FResult.ERROR, exit_code.stderr
+            return ValidationResult.from_legacy(FResult.ERROR, exit_code.stderr)

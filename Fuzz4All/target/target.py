@@ -2,6 +2,7 @@ import glob
 import os
 import random
 import time
+from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, List, Tuple, Union
 
@@ -38,6 +39,79 @@ class FResult(Enum):
         4  # the generated input is ill-formed due to the weakness of the language model
     )
     TIMED_OUT = 10  # timed out, can be okay in certain targets
+
+
+class CompileStatus(Enum):
+    """Structured status for validation; maps to FResult for backward compatibility."""
+
+    OK = "ok"
+    COMPILE_ERROR = "compile_error"
+    ICE = "ice"
+    CRASH = "crash"
+    TIMEOUT = "timeout"
+
+
+def compile_status_to_fresult(status: CompileStatus) -> FResult:
+    if status == CompileStatus.OK:
+        return FResult.SAFE
+    if status == CompileStatus.COMPILE_ERROR:
+        return FResult.FAILURE
+    return FResult.ERROR  # ICE, CRASH, TIMEOUT
+
+
+STDERR_TRUNCATE_LINES = 20
+STDERR_TRUNCATE_BYTES = 4096
+
+
+def _truncate_stderr(stderr: str) -> str:
+    if not stderr:
+        return ""
+    lines = stderr.strip().split("\n")[:STDERR_TRUNCATE_LINES]
+    out = "\n".join(lines)
+    if len(out.encode("utf-8")) > STDERR_TRUNCATE_BYTES:
+        out = out.encode("utf-8")[:STDERR_TRUNCATE_BYTES].decode("utf-8", errors="replace")
+    return out
+
+
+@dataclass
+class ValidationResult:
+    """Structured validation result for repair and logging."""
+
+    status: CompileStatus
+    exit_code: int
+    elapsed_sec: float
+    stderr: str
+    signature: str
+
+    @property
+    def message(self) -> str:
+        """Backward-compatible message for logging (truncated stderr)."""
+        return _truncate_stderr(self.stderr)
+
+    @property
+    def fresult(self) -> FResult:
+        """FResult for backward compatibility with update() and parse_validation_message."""
+        return compile_status_to_fresult(self.status)
+
+    @classmethod
+    def from_legacy(cls, fresult: FResult, message: str) -> "ValidationResult":
+        """Build ValidationResult from legacy (FResult, str) for non-CPP targets."""
+        if fresult == FResult.SAFE:
+            status = CompileStatus.OK
+        elif fresult == FResult.FAILURE:
+            status = CompileStatus.COMPILE_ERROR
+        elif fresult == FResult.TIMED_OUT:
+            status = CompileStatus.TIMEOUT
+        else:
+            status = CompileStatus.COMPILE_ERROR
+        msg = message or ""
+        return cls(
+            status=status,
+            exit_code=0 if fresult == FResult.SAFE else 1,
+            elapsed_sec=0.0,
+            stderr=msg,
+            signature=msg[:2000] if msg else "unknown",
+        )
 
 
 # base class file for target, used for user defined system targets
@@ -140,9 +214,9 @@ class Target(object):
         for fo in fos:
             code = self.prompt_used["begin"] + "\n" + fo
             wb_file = self.write_back_file(code)
-            result, _ = self.validate_individual(wb_file)
+            vr = self.validate_individual(wb_file)
             if (
-                result == FResult.SAFE
+                vr.fresult == FResult.SAFE
                 and self.filter(code)
                 and self.clean_code(code) not in unique_set
             ):
@@ -262,6 +336,27 @@ class Target(object):
                 max_length=1024,
             )
 
+    def generate_single(
+        self, prompt: str, max_length: int = 512, temperature: float = 0.7
+    ) -> str:
+        """Generate a single response (for repair); batch_size=1, no prompt logging."""
+        if getattr(self, "backend", None) == "ollama" and HAS_OLLAMA:
+            response = ollama.chat(
+                model=self.ollama_model_name,
+                messages=[{"role": "user", "content": prompt}],
+                options={"num_predict": max_length, "temperature": temperature},
+            )
+            content = response["message"]["content"]
+            return content or ""
+        else:
+            outputs = self.model.generate(
+                prompt,
+                batch_size=1,
+                temperature=temperature,
+                max_length=max_length,
+            )
+            return outputs[0] if outputs else ""
+
     def generate(self, **kwargs) -> Union[List[str], bool]:
         try:
             fos = self.generate_model()
@@ -330,8 +425,8 @@ class Target(object):
             )
             self.prev_example = new_code
 
-    # validation
-    def validate_individual(self, filename) -> (FResult, str):
+    # validation; subclasses return ValidationResult (CPP) or use ValidationResult.from_legacy for legacy (FResult, str)
+    def validate_individual(self, filename) -> ValidationResult:
         raise NotImplementedError
 
     def parse_validation_message(self, f_result, message, file_name):
@@ -362,5 +457,5 @@ class Target(object):
             glob.glob(self.folder + "/*.fuzz"),
             description="Validating",
         ):
-            f_result, message = self.validate_individual(fuzz_output)
-            self.parse_validation_message(f_result, message, fuzz_output)
+            vr = self.validate_individual(fuzz_output)
+            self.parse_validation_message(vr.fresult, vr.message, fuzz_output)

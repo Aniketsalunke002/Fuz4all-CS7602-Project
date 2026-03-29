@@ -4,7 +4,7 @@ from typing import List, Union
 
 import torch
 
-from Fuzz4All.target.target import FResult, Target
+from Fuzz4All.target.target import FResult, Target, ValidationResult
 from Fuzz4All.util.Logger import LEVEL
 from Fuzz4All.util.util import comment_remover
 
@@ -56,11 +56,11 @@ class GOTarget(Target):
             pass
         return "/tmp/temp{}.go".format(self.CURRENT_TIME)
 
-    def validate_individual(self, filename) -> (FResult, str):
+    def validate_individual(self, filename) -> ValidationResult:
         try:
             with open(filename, "r", encoding="utf-8") as f:
                 code = f.read()
-        except:
+        except Exception:
             pass
         self.write_back_file(code)
         try:
@@ -86,12 +86,12 @@ class GOTarget(Target):
                 ],
                 shell=True,
             )  # kill all tests thank you
-            return FResult.TIMED_OUT, "go"
+            return ValidationResult.from_legacy(FResult.TIMED_OUT, "go")
         except UnicodeDecodeError as ue:
-            return FResult.FAILURE, "decoding error"
+            return ValidationResult.from_legacy(FResult.FAILURE, "decoding error")
         if exit_code.returncode == 1:
-            return FResult.FAILURE, exit_code.stderr
+            return ValidationResult.from_legacy(FResult.FAILURE, exit_code.stderr)
         elif exit_code.returncode == 0:
-            return FResult.SAFE, exit_code.stdout
+            return ValidationResult.from_legacy(FResult.SAFE, exit_code.stdout)
         else:
-            return FResult.ERROR, exit_code.stderr
+            return ValidationResult.from_legacy(FResult.ERROR, exit_code.stderr)

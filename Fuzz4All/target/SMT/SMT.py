@@ -4,7 +4,7 @@ from typing import List, Union
 
 import torch
 
-from Fuzz4All.target.target import FResult, Target
+from Fuzz4All.target.target import FResult, Target, ValidationResult
 from Fuzz4All.util.Logger import LEVEL
 from Fuzz4All.util.util import comment_remover
 
@@ -112,7 +112,7 @@ class SMTTarget(Target):
         )
         return code
 
-    def validate_individual(self, filename) -> (FResult, str):
+    def validate_individual(self, filename) -> ValidationResult:
         try:
             cvc_exit_code = subprocess.run(
                 f"{self.target_name} -m -i -q --check-models --lang smt2 {filename}",
@@ -135,13 +135,16 @@ class SMTTarget(Target):
                 ],
                 shell=True,
             )  # kill all tests thank you
-            return FResult.TIMED_OUT, "CVC5 Timed out"
+            return ValidationResult.from_legacy(FResult.TIMED_OUT, "CVC5 Timed out")
         except UnicodeDecodeError as ue:
-            return FResult.FAILURE, "UnicodeDecodeError"
+            return ValidationResult.from_legacy(FResult.FAILURE, "UnicodeDecodeError")
 
         if cvc_exit_code.returncode != 0:
-            return FResult.FAILURE, "CVC5:\n{}".format(
-                cvc_exit_code.stdout + cvc_exit_code.stderr,
+            return ValidationResult.from_legacy(
+                FResult.FAILURE,
+                "CVC5:\n{}".format(
+                    cvc_exit_code.stdout + cvc_exit_code.stderr,
+                ),
             )
 
-        return FResult.SAFE, "its safe"
+        return ValidationResult.from_legacy(FResult.SAFE, "its safe")

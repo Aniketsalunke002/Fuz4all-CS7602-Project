@@ -7,7 +7,7 @@ from multiprocessing import Process
 from threading import Timer
 from typing import List, Tuple, Union
 
-from Fuzz4All.target.target import FResult, Target
+from Fuzz4All.target.target import FResult, Target, ValidationResult
 from Fuzz4All.util.Logger import LEVEL
 
 # create an enum with some code snippets
@@ -185,7 +185,7 @@ class QiskitTarget(Target):
         with open(filename, "w", encoding="utf-8") as f:
             f.write(content)
 
-    def validate_individual(self, filepath: str) -> Tuple[FResult, str]:
+    def validate_individual(self, filepath: str) -> ValidationResult:
         """Apply the oracle to define whether the input is valid or not."""
         self.v_logger.logo("--------------------------", level=LEVEL.VERBOSE)
 
@@ -197,22 +197,27 @@ class QiskitTarget(Target):
             # try to parse again
             parser_result, parser_msg = self._validate_static(filepath)
             if parser_result != FResult.SAFE:
-                return parser_result, parser_msg
+                return ValidationResult.from_legacy(parser_result, parser_msg)
 
         # check if the config_dict attribute exists
         if hasattr(self, "config_dict"):
             target = self.config_dict["target"]
             oracle = target["oracle"]
             if oracle == "crash":
-                return self._validate_with_crash_oracle(filepath)
+                r, m = self._validate_with_crash_oracle(filepath)
+                return ValidationResult.from_legacy(r, m)
             elif oracle == "diff":
-                return self._validate_with_diff_opt_levels(filepath)
+                r, m = self._validate_with_diff_opt_levels(filepath)
+                return ValidationResult.from_legacy(r, m)
             elif oracle == "metamorphic":
-                return self._validate_with_QASM_roundtrip(filepath)
+                r, m = self._validate_with_QASM_roundtrip(filepath)
+                return ValidationResult.from_legacy(r, m)
             elif oracle == "opt_and_qasm":
-                return self._validate_any_circuit(filepath)
+                r, m = self._validate_any_circuit(filepath)
+                return ValidationResult.from_legacy(r, m)
 
-        return self._validate_with_crash_oracle(filepath)
+        r, m = self._validate_with_crash_oracle(filepath)
+        return ValidationResult.from_legacy(r, m)
 
     def _validate_with_diff_opt_levels(self, filepath: str) -> Tuple[FResult, str]:
         """Validate the input with different optimization levels.
