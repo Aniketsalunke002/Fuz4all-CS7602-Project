@@ -1,0 +1,944 @@
+Run started:2026-04-25 07:11:08.725354+00:00
+
+Test results:
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/fuzz.py:69:4
+68	            f.write(fo)
+69	    except Exception:
+70	        pass
+71	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/fuzz.py:88:8
+87	                return json.load(f)
+88	        except Exception:
+89	            pass
+90	    return {}
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/fuzz.py:98:4
+97	            json.dump(cache, f, indent=2)
+98	    except Exception:
+99	        pass
+100	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/fuzz.py:110:4
+109	            rf.write(json.dumps(record) + "\n")
+110	    except Exception:
+111	        pass
+112	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/fuzz.py:369:4
+368	            json.dump(metrics_out, mf, indent=2)
+369	    except Exception:
+370	        pass
+371	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: Fuzz4All/fuzz.py:449:8
+448	    if not fuzzing["evaluate"]:
+449	        assert (
+450	            not os.path.exists(folder) or fuzzing["resume"]
+451	        ), f"{folder} already exists!"
+452	        os.makedirs(fuzzing["output_folder"], exist_ok=True)
+
+--------------------------------------------------
+>> Issue: [B615:huggingface_unsafe_download] Unsafe Hugging Face Hub download without revision pinning in from_pretrained()
+   Severity: Medium   Confidence: High
+   CWE: CWE-494 (https://cwe.mitre.org/data/definitions/494.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b615_huggingface_unsafe_download.html
+   Location: Fuzz4All/model.py:80:25
+79	        self.device = device
+80	        self.tokenizer = AutoTokenizer.from_pretrained(
+81	            checkpoint,
+82	        )
+83	        self.model = (
+
+--------------------------------------------------
+>> Issue: [B615:huggingface_unsafe_download] Unsafe Hugging Face Hub download without revision pinning in from_pretrained()
+   Severity: Medium   Confidence: High
+   CWE: CWE-494 (https://cwe.mitre.org/data/definitions/494.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b615_huggingface_unsafe_download.html
+   Location: Fuzz4All/model.py:84:12
+83	        self.model = (
+84	            AutoModelForCausalLM.from_pretrained(
+85	                checkpoint,
+86	            )
+87	            .to(torch.bfloat16)
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: '<fim_prefix>'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: Fuzz4All/model.py:92:28
+91	        self.max_length = max_length
+92	        self.prefix_token = "<fim_prefix>"
+93	        self.suffix_token = "<fim_suffix><fim_middle>"
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: '<fim_suffix><fim_middle>'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: Fuzz4All/model.py:93:28
+92	        self.prefix_token = "<fim_prefix>"
+93	        self.suffix_token = "<fim_suffix><fim_middle>"
+94	        self.skip_special_tokens = False
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: Fuzz4All/target/C/C.py:2:0
+1	import re
+2	import subprocess
+3	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: Fuzz4All/target/C/C.py:25:15
+24	    """
+25	    gcc_help = subprocess.run(
+26	        "gcc -v --help 2> /dev/null", shell=True, capture_output=True
+27	    )
+28	    gcc_help = gcc_help.stdout.decode("utf-8")
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True seems safe, but may be changed in the future, consider rewriting without shell
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/C/C.py:26:15
+25	    gcc_help = subprocess.run(
+26	        "gcc -v --help 2> /dev/null", shell=True, capture_output=True
+27	    )
+28	    gcc_help = gcc_help.stdout.decode("utf-8")
+29	    gcc_help = gcc_help.split("\n")
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/C/C.py:74:16
+73	            with open(
+74	                "/tmp/temp{}.c".format(self.CURRENT_TIME), "w", encoding="utf-8"
+75	            ) as f:
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/C/C.py:77:8
+76	                f.write(code)
+77	        except:
+78	            pass
+79	        return "/tmp/temp{}.c".format(self.CURRENT_TIME)
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/C/C.py:79:15
+78	            pass
+79	        return "/tmp/temp{}.c".format(self.CURRENT_TIME)
+80	
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/C/C.py:114:24
+113	                f"{compiler} -x c -std=c2x {filename} -o /tmp/out{self.CURRENT_TIME}",
+114	                shell=True,
+115	                capture_output=True,
+116	                encoding="utf-8",
+117	                timeout=5,
+118	                text=True,
+119	            )
+120	        except subprocess.TimeoutExpired as te:
+121	            pname = f"'{filename}'"
+122	            subprocess.run(
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/C/C.py:124:12
+123	                ["ps -ef | grep " + pname + " | grep -v grep | awk '{print $2}'"],
+124	                shell=True,
+125	            )
+126	            subprocess.run(
+127	                [
+128	                    "ps -ef | grep "
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/C/C.py:132:12
+131	                ],
+132	                shell=True,
+133	            )  # kill all tests thank you
+134	            return FResult.TIMED_OUT, compiler
+135	        except UnicodeDecodeError as ue:
+136	            return FResult.FAILURE, compiler
+137	
+138	        # remove the executable
+139	        subprocess.run(f"rm /tmp/out{self.CURRENT_TIME}", shell=True)
+140	
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/C/C.py:139:8
+138	        # remove the executable
+139	        subprocess.run(f"rm /tmp/out{self.CURRENT_TIME}", shell=True)
+140	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/C/C.py:146:16
+145	                        code = f.read()
+146	                except:
+147	                    pass
+148	                self.write_back_file(code + main_code)
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/C/C.py:151:28
+150	                    f"{compiler} -std=c2x -x c /tmp/temp{self.CURRENT_TIME}.c -o /tmp/out{self.CURRENT_TIME}",
+151	                    shell=True,
+152	                    capture_output=True,
+153	                    encoding="utf-8",
+154	                    text=True,
+155	                )
+156	                if exit_code.returncode == 0:
+157	                    return FResult.SAFE, "its safe"
+158	            return FResult.FAILURE, exit_code.stderr
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: Fuzz4All/target/CPP/CPP.py:2:0
+1	import re
+2	import subprocess
+3	import time
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/CPP/CPP.py:32:16
+31	            with open(
+32	                "/tmp/temp{}.cpp".format(self.CURRENT_TIME), "w", encoding="utf-8"
+33	            ) as f:
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/CPP/CPP.py:35:8
+34	                f.write(code)
+35	        except:
+36	            pass
+37	        return "/tmp/temp{}.cpp".format(self.CURRENT_TIME)
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/CPP/CPP.py:37:15
+36	            pass
+37	        return "/tmp/temp{}.cpp".format(self.CURRENT_TIME)
+38	
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/CPP/CPP.py:82:32
+81	            first_line = re.sub(r"/[^\s]+\.cpp", "<file>.cpp", first_line)
+82	            first_line = re.sub(r"/tmp/temp[^\s]*", "<tmp>", first_line)
+83	            return "ICE:" + first_line[:200]
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/CPP/CPP.py:90:28
+89	        first_line = re.sub(r"/[^\s:]+\.cpp", "<file>.cpp", first_line)
+90	        first_line = re.sub(r"/tmp/temp[^\s]*", "<tmp>", first_line)
+91	        return "COMPILE:" + first_line[:300]
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/CPP/CPP.py:94:20
+93	    def validate_compiler(self, compiler, filename) -> ValidationResult:
+94	        out_obj = f"/tmp/out{self.CURRENT_TIME}.o"
+95	        start = time.perf_counter()
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/CPP/CPP.py:102:21
+101	                f"{compiler} -x c++ -std=c++23 -O0 -fdiagnostics-color=never -c {filename} -o {out_obj}",
+102	                shell=True,
+103	                capture_output=True,
+104	                encoding="utf-8",
+105	                timeout=5,
+106	                text=True,
+107	            )
+108	            exit_code_val = result.returncode
+109	            stderr_text = result.stderr or ""
+110	        except subprocess.TimeoutExpired:
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/CPP/CPP.py:117:12
+116	                ["ps -ef | grep " + pname + " | grep -v grep | awk '{print $2}'"],
+117	                shell=True,
+118	            )
+119	            subprocess.run(
+120	                [
+121	                    "ps -ef | grep "
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/CPP/CPP.py:125:12
+124	                ],
+125	                shell=True,
+126	            )
+127	        elapsed = time.perf_counter() - start
+128	
+129	        if timed_out:
+130	            sig = self._normalize_signature("", -1, True)
+131	            return ValidationResult(
+132	                status=CompileStatus.TIMEOUT,
+133	                exit_code=-1,
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: Fuzz4All/target/GO/GO.py:1:0
+1	import subprocess
+2	import time
+3	from typing import List, Union
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/GO/GO.py:52:16
+51	            with open(
+52	                "/tmp/temp{}.go".format(self.CURRENT_TIME), "w", encoding="utf-8"
+53	            ) as f:
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/GO/GO.py:55:8
+54	                f.write(code)
+55	        except:
+56	            pass
+57	        return "/tmp/temp{}.go".format(self.CURRENT_TIME)
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/GO/GO.py:57:15
+56	            pass
+57	        return "/tmp/temp{}.go".format(self.CURRENT_TIME)
+58	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/GO/GO.py:63:8
+62	                code = f.read()
+63	        except Exception:
+64	            pass
+65	        self.write_back_file(code)
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/GO/GO.py:69:24
+68	                f"{self.target_name} build -o /tmp/temp{self.CURRENT_TIME} /tmp/temp{self.CURRENT_TIME}.go",
+69	                shell=True,
+70	                capture_output=True,
+71	                encoding="utf-8",
+72	                timeout=5,
+73	                text=True,
+74	            )
+75	        except subprocess.TimeoutExpired as te:
+76	            pname = f"'temp{self.CURRENT_TIME}'"
+77	            subprocess.run(
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/GO/GO.py:79:12
+78	                ["ps -ef | grep " + pname + " | grep -v grep | awk '{print $2}'"],
+79	                shell=True,
+80	            )
+81	            subprocess.run(
+82	                [
+83	                    "ps -ef | grep "
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/GO/GO.py:87:12
+86	                ],
+87	                shell=True,
+88	            )  # kill all tests thank you
+89	            return ValidationResult.from_legacy(FResult.TIMED_OUT, "go")
+90	        except UnicodeDecodeError as ue:
+91	            return ValidationResult.from_legacy(FResult.FAILURE, "decoding error")
+92	        if exit_code.returncode == 1:
+93	            return ValidationResult.from_legacy(FResult.FAILURE, exit_code.stderr)
+94	        elif exit_code.returncode == 0:
+95	            return ValidationResult.from_legacy(FResult.SAFE, exit_code.stdout)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: Fuzz4All/target/JAVA/JAVA.py:2:0
+1	import os
+2	import subprocess
+3	import time
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:28:12
+27	                    f.write(code)
+28	            except:
+29	                pass
+30	        return "/tmp/temp{}.java".format(self.CURRENT_TIME)
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:30:15
+29	                pass
+30	        return "/tmp/temp{}.java".format(self.CURRENT_TIME)
+31	
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:64:19
+63	            # No public class found, return standard write back file name
+64	            return "/tmp/temp{}.java".format(self.CURRENT_TIME)
+65	
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:67:30
+66	        # check if folder exists
+67	        if not os.path.exists("/tmp/temp{}".format(self.CURRENT_TIME)):
+68	            os.mkdir("/tmp/temp{}".format(self.CURRENT_TIME))
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:68:21
+67	        if not os.path.exists("/tmp/temp{}".format(self.CURRENT_TIME)):
+68	            os.mkdir("/tmp/temp{}".format(self.CURRENT_TIME))
+69	
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:71:15
+70	        # Public class is found, ensure that file name matches public class name
+71	        return "/tmp/temp{0}/{1}.java".format(
+72	            self.CURRENT_TIME, public_class_name[0].split()[-1]
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:82:8
+81	                self.write_back_file(code, write_back_name=write_back_name)
+82	        except Exception:
+83	            pass
+84	
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:88:24
+87	                f"{self.target_name} --source 22 --enable-preview --target 22 {write_back_name}",
+88	                shell=True,
+89	                capture_output=True,
+90	                encoding="utf-8",
+91	                timeout=5,
+92	                text=True,
+93	            )
+94	        except subprocess.TimeoutExpired as te:
+95	            pname = f"'temp{self.CURRENT_TIME}'"
+96	            subprocess.run(
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:98:12
+97	                ["ps -ef | grep " + pname + " | grep -v grep | awk '{print $2}'"],
+98	                shell=True,
+99	            )
+100	            subprocess.run(
+101	                [
+102	                    "ps -ef | grep "
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/JAVA/JAVA.py:106:12
+105	                ],
+106	                shell=True,
+107	            )  # kill all tests thank you
+108	            return ValidationResult.from_legacy(FResult.TIMED_OUT, "java")
+109	        if exit_code.returncode == 1:
+110	            return ValidationResult.from_legacy(FResult.FAILURE, exit_code.stderr)
+111	        elif exit_code.returncode == 0:
+112	            return ValidationResult.from_legacy(FResult.SAFE, "its safe")
+113	        else:
+114	            return ValidationResult.from_legacy(FResult.ERROR, exit_code.stderr)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:4:0
+3	import re
+4	import subprocess
+5	from enum import Enum
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:94:24
+93	        try:
+94	            with open(f"/tmp/temp{self.CURRENT_TIME}.py", "w", encoding="utf-8") as f:
+95	                f.write(code)
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:96:8
+95	                f.write(code)
+96	        except Exception:
+97	            pass
+98	        return f"/tmp/temp{self.CURRENT_TIME}.py"
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:98:17
+97	            pass
+98	        return f"/tmp/temp{self.CURRENT_TIME}.py"
+99	
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:159:8
+158	            ["ps -ef | grep " + pname + " | grep -v grep | awk '{print $2}'"],
+159	            shell=True,
+160	        )
+161	        subprocess.run(
+162	            [
+163	                "ps -ef | grep "
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:167:8
+166	            ],
+167	            shell=True,
+168	        )  # kill all tests thank you
+169	
+170	    def _remove_partial_lines(self, content: str) -> None:
+171	        """Remove the last line if it is not ending with new line."""
+172	        if not content.endswith("\n"):
+173	            lines = content.split("\n")
+174	            lines = lines[:-1]
+175	            content = "\n".join(lines)
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:258:29
+257	            # store the program in a temporary file
+258	            new_filename = f"/tmp/temp{self.CURRENT_TIME}_lvl_{lvl}.py"
+259	            i_content = program_content + "\n" + str(opt_level_snippet.value)
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:267:28
+266	                    cmd,
+267	                    shell=True,
+268	                    capture_output=True,
+269	                    encoding="utf-8",
+270	                    timeout=15,
+271	                    text=True,
+272	                )
+273	                exit_codes[opt_level_snippet] = exit_code
+274	                self.v_logger.logo(f"Execution result: {exit_code}")
+275	            except ValueError as e:
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:308:24
+307	                cmd,
+308	                shell=True,
+309	                capture_output=True,
+310	                encoding="utf-8",
+311	                timeout=5,
+312	                text=True,
+313	            )
+314	            self.v_logger.logo(f"Execution result: {exit_code}")
+315	            if exit_code.returncode == 0:
+316	                return FResult.SAFE, "its safe"
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:343:24
+342	                cmd,
+343	                shell=True,
+344	                capture_output=True,
+345	                encoding="utf-8",
+346	                timeout=5,
+347	                text=True,
+348	            )
+349	            self.v_logger.logo(f"Execution result: {exit_code}")
+350	            if exit_code.returncode == 0:
+351	                return FResult.SAFE, "its safe"
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/QISKIT/QISKIT.py:379:24
+378	                cmd,
+379	                shell=True,
+380	                capture_output=True,
+381	                encoding="utf-8",
+382	                timeout=5,
+383	                text=True,
+384	            )
+385	            self.v_logger.logo(f"Execution result: {exit_code}")
+386	            if exit_code.returncode == 0:
+387	                return FResult.SAFE, "its safe"
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: Fuzz4All/target/SMT/SMT.py:1:0
+1	import subprocess
+2	import time
+3	from typing import List, Union
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/SMT/SMT.py:69:16
+68	            with open(
+69	                "/tmp/temp{}.smt2".format(self.CURRENT_TIME), "w", encoding="utf-8"
+70	            ) as f:
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/target/SMT/SMT.py:72:8
+71	                f.write(code)
+72	        except:
+73	            pass
+74	        return "/tmp/temp{}.smt2".format(self.CURRENT_TIME)
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: Fuzz4All/target/SMT/SMT.py:74:15
+73	            pass
+74	        return "/tmp/temp{}.smt2".format(self.CURRENT_TIME)
+75	
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/SMT/SMT.py:119:28
+118	                f"{self.target_name} -m -i -q --check-models --lang smt2 {filename}",
+119	                shell=True,
+120	                capture_output=True,
+121	                text=True,
+122	                timeout=5,
+123	            )
+124	        except subprocess.TimeoutExpired as te:
+125	            pname = f"'{filename}'"
+126	            subprocess.run(
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/SMT/SMT.py:128:12
+127	                ["ps -ef | grep " + pname + " | grep -v grep | awk '{print $2}'"],
+128	                shell=True,
+129	            )
+130	            subprocess.run(
+131	                [
+132	                    "ps -ef | grep "
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: Fuzz4All/target/SMT/SMT.py:136:12
+135	                ],
+136	                shell=True,
+137	            )  # kill all tests thank you
+138	            return ValidationResult.from_legacy(FResult.TIMED_OUT, "CVC5 Timed out")
+139	        except UnicodeDecodeError as ue:
+140	            return ValidationResult.from_legacy(FResult.FAILURE, "UnicodeDecodeError")
+141	
+142	        if cvc_exit_code.returncode != 0:
+143	            return ValidationResult.from_legacy(
+144	                FResult.FAILURE,
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: Fuzz4All/target/target.py:396:23
+395	        while 1:
+396	            strategy = random.randint(0, self.p_strategy)
+397	            # generate new code using separator
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: Fuzz4All/util/Logger.py:30:8
+29	                print(self.format_log(msg, level))
+30	        except Exception as e:
+31	            pass
+
+--------------------------------------------------
+>> Issue: [B506:yaml_load] Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().
+   Severity: Medium   Confidence: High
+   CWE: CWE-20 (https://cwe.mitre.org/data/definitions/20.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b506_yaml_load.html
+   Location: Fuzz4All/util/util.py:65:17
+64	    with open(filepath, "r") as f:
+65	        config = yaml.load(f, Loader=yaml.FullLoader)
+66	    return config
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: tools/evaluate_candidate.py:10:0
+9	import os
+10	import subprocess
+11	import sys
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: tools/evaluate_candidate.py:71:4
+70	    env["PYTHONPATH"] = repo_root + os.pathsep + env.get("PYTHONPATH", "")
+71	    subprocess.run(cmd, cwd=repo_root, env=env, check=True)
+72	
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: tools/run_search_round.py:12:0
+11	import os
+12	import subprocess
+13	import sys
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: tools/run_search_round.py:92:8
+91	        ]
+92	        subprocess.run(cmd, cwd=repo_root, check=True)
+93	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: tools/run_search_round.py:127:20
+126	                            signatures.add(sig[:200])
+127	                    except Exception:
+128	                        pass
+129	    common_sigs = list(signatures)[:15]
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 2440
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 32
+		Medium: 22
+		High: 23
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 21
+		High: 56
+Files skipped (0):

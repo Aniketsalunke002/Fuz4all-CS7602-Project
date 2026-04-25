@@ -1,0 +1,48 @@
+# Custom Semgrep rule for fuzz4all-cs (CS7602 Task 1).
+#
+# Goal: detect any path where an attacker-controlled identifier (target_name
+# / compiler) is interpolated into a shell command and executed by
+# subprocess.* with shell=True. This rule is project-specific and
+# complements the generic Semgrep registry rule
+# `python.lang.security.audit.dangerous-subprocess-use.dangerous-subprocess-use`
+# by enforcing the trust boundary (config -> target_name -> compiler -> shell).
+#
+# Mapping: CWE-78 (OS Command Injection)
+# Reference: docs/report_task1.tex Finding F1
+rules:
+  - id: fuzz4all-cmd-inject-target-name
+    message: |
+      target_name / compiler value flows into subprocess.run(..., shell=True)
+      via f-string interpolation. An attacker who controls the YAML config or
+      the --target CLI flag can inject arbitrary shell commands. Use a
+      list-form invocation (shell=False) and validate target_name against an
+      allow-list of compiler binaries.
+    severity: ERROR
+    languages: [python]
+    metadata:
+      cwe: "CWE-78: OS Command Injection"
+      owasp: "A03:2021 - Injection"
+      confidence: HIGH
+      category: security
+      assignment: "CS7602 Task 1 - Finding F1"
+    mode: taint
+    pattern-sources:
+      - patterns:
+          - pattern-either:
+              - pattern: self.target_name
+              - pattern: $X.target_name
+              - pattern: |
+                  $X = self.target_name
+                  ...
+              - pattern: |
+                  compiler = self.target_name
+              - pattern: compiler
+              - pattern: |
+                  compiler = ...
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: subprocess.run($CMD, ..., shell=True, ...)
+              - pattern: subprocess.Popen($CMD, ..., shell=True, ...)
+              - pattern: subprocess.call($CMD, ..., shell=True, ...)
+              - pattern: os.system($CMD)
