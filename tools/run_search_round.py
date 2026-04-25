@@ -6,6 +6,7 @@ No paid API in code.
 """
 
 import argparse
+import copy
 import json
 import os
 import subprocess
@@ -52,21 +53,30 @@ def main():
     log_path = os.path.join(search_out, "search_log.jsonl")
     results = []
 
+    llm_keys = {"temperature", "batch_size", "model_name", "max_length", "device", "model_folder", "additional_eos_tokens"}
+    fuzzing_keys = {"num", "total_time", "resume", "otf", "evaluate", "log_level", "prompt_strategy", "output_folder", "target_name"}
+
     for c in candidates:
         name = c.get("name", "unknown")
         gen = c.get("gen", {})
         repair = c.get("repair", {})
-        config = dict(base)
+        config = copy.deepcopy(base)
         if gen:
             for k, v in gen.items():
-                if k == "llm":
+                if k == "llm" and isinstance(v, dict):
                     config.setdefault("llm", {}).update(v)
-                elif k == "fuzzing":
+                elif k == "fuzzing" and isinstance(v, dict):
                     config.setdefault("fuzzing", {}).update(v)
+                elif k == "target" and isinstance(v, dict):
+                    config.setdefault("target", {}).update(v)
+                elif k in llm_keys:
+                    config.setdefault("llm", {})[k] = v
+                elif k in fuzzing_keys:
+                    config.setdefault("fuzzing", {})[k] = v
                 else:
                     config[k] = v
         if repair:
-            config["repair"] = repair
+            config.setdefault("repair", {}).update(repair)
         mat_path = os.path.join(materialized_dir, f"{name}.yaml")
         save_yaml(config, mat_path)
 

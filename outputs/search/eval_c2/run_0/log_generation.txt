@@ -1,0 +1,165 @@
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main(int argc, char const *argv[])
+{
+    #pragma GCC optimize ("O0")
+
+    int foo = 5;  
+    float pi = 3.14f;  
+    double d = 3.14;  
+
+    std::cout << foo << std::endl;
+
+     
+    foo++;
+
+    std::cout << foo << std::endl;
+
+    double d2 = (float)5;  
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+using namespace std;
+int main() {
+  int a;
+  cout << "Please enter a number between 0-20: ";
+  cin >> a;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+template <typename T>
+void f(T);
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main()
+{
+	int counter = 0;
+	while(counter <= 100) {
+		new int[1][1]{counter};
+		std::cout << counter;
+		counter++;
+
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+ 
+class B {
+public:
+  int b;
+  B(B &other) : b(other.b + 1) {}
+  B() : b(1) {}
+  ~B() {}
+  int* f() {
+    std::cout << "B " << b << '\n';
+    return &b;
+  }
+};
+void test() {
+  B b;
+  new ::B(b);
+  ::B b2 = B(b);
+  B *b3 = b2.f();
+}
+ 
+int main() {
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+int main()
+{
+	int counter = 0;
+	while(counter <= 100) {
+		new int[1][1]{counter};
+		std::cout << counter;
+		counter++;
+	}
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+	int counter = 0;
+	while(counter <= 100){
+		new std::string[1][1](counter);
+#warning std::string does not store char
+		std::cout << counter;
+		counter++;
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+	int counter = 0;
+	while(counter <= 100) {
+		new int[1][1]{counter};
+		
+		counter = counter + 1;
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+	int counter = 1;
+	while(counter <= 100) {
+		new int[1][1]{counter};
+		std::cout << counter;
+		counter++;
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+	int counter = 0;
+	while(counter <= 100) {
+		new int[1][1]{++counter};
+		std::cout << counter;
+		counter++;
+	}
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+	int counter = 0;
+	while(1) {
+		new int[1][1]{counter};
+		std::cout << counter;
+		counter++;
+	}
+}
+[VERBOSE] ========== sample =========

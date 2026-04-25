@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+int n = 2;   
+int a[n] = {53, 23, 75, 10,};
+int i = 0;
+int main()
+{
+    a[i] = 29;      
+    i++;           
+    cout << a[0];   
+}

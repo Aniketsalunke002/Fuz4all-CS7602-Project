@@ -1,188 +1,228 @@
-# <p style="text-align: center;">  🌌️Fuzz4All: Universal Fuzzing with LLMs </p>
+<h1 align="center">🌌️ Fuzz4All + Error-Guided Repair</h1>
 
 <p align="center">
-    <a href="https://arxiv.org/abs/2308.04748"><img src="https://img.shields.io/badge/arXiv-2308.04748-b31b1b.svg?style=for-the-badge">
-    <a href="https://doi.org/10.5281/zenodo.10456883"><img src="https://img.shields.io/badge/DOI-10456883-blue?style=for-the-badge">
-    <a href="https://hub.docker.com/r/stevenxia/fuzz4all/tags"><img src="https://img.shields.io/badge/docker-fuzz4all-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=blue">
-    <a href="https://github.com/fuzz4all/fuzz4all/blob/master/LICENSE"><img src="https://forthebadge.com/images/badges/cc-by.svg" style="height: 28px"></a>
+  <a href="https://arxiv.org/abs/2308.04748"><img src="https://img.shields.io/badge/arXiv-2308.04748-b31b1b.svg?style=for-the-badge"></a>
+  <a href="https://doi.org/10.5281/zenodo.10456883"><img src="https://img.shields.io/badge/DOI-10456883-blue?style=for-the-badge"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC--BY-green?style=for-the-badge"></a>
 </p>
 
-This repository contains the source code for our ICSE'24 paper <i> "Fuzz4All: Universal Fuzzing with Large Language Models" </i>
+This repository contains the source code for the ICSE'24 paper *"Fuzz4All: Universal Fuzzing with Large Language Models"* together with a course-project extension that adds an **error-guided repair stage**, a **fixed evaluator**, and an **AI-driven search harness** for C++ compiler fuzzing.
 
-## 🌌️ About
+---
 
-`Fuzz4All` -- the first fuzzer that can universally target many input languages and features of these languages.
-> The key idea behind `Fuzz4All` is to leverage large language models (LLMs) as an input generation and mutation engine, which enables the 
-> approach to produce diverse and realistic inputs for any practically relevant language. 
+## ✨ What this fork adds
 
-To realize this potential, we present a novel **autoprompting technique**, which creates LLM prompts 
-that are well-suited for fuzzing, and a novel **LLM-powered fuzzing loop**, which iteratively updates 
-the prompt to create new fuzzing inputs.
+The original Fuzz4All loop is: *generate → validate → keep if valid*. Failing programs are simply discarded.
 
-![](./resources/overview.gif)
+This fork inserts a **repair stage** between *validate* and *discard*:
 
-## ⚡ Quick Start
+```
+generate ─► compile (g++ -c) ─► OK ─► keep
+                       │
+                       └─► FAIL ─► repair (LLM + stderr) ─► recompile ─► keep if OK
+```
 
-> [!Important]
-> We highly recommend running `Fuzz4All` in a sandbox environment/machine such as docker. 
-> Since LLMs may generate potential harmful code your machine, please proceed with caution.
-> We have provided a complete docker image in our artifact here: https://doi.org/10.5281/zenodo.10456883
+| Component | What it does | Where it lives |
+|---|---|---|
+| Structured validation | Returns `ValidationResult` (status, exit code, elapsed, stderr, normalized signature) | `Fuzz4All/target/target.py`, `Fuzz4All/target/CPP/CPP.py` |
+| Repair stage | Completion-style prompt with compiler `stderr`; six templates (T1…T6) | `Fuzz4All/repair/repair.py`, `prompts/repair/` |
+| Repair cache | Reuses past repairs keyed by failure signature | `outputs/<run>/repair_cache.json` |
+| Per-run logs | One JSONL record per program/attempt + a summary metrics file | `outputs/<run>/records.jsonl`, `metrics.json` |
+| Fixed evaluator | Repeats a candidate config under a fixed budget, aggregates mean/std | `tools/evaluate_candidate.py` |
+| Search harness | Evaluates a JSON list of candidates and emits a prompt for the next round | `tools/run_search_round.py` |
 
-### Setup
+No paid APIs are used. Repair reuses the same local LLM (StarCoderBase) already used for generation.
 
-First, create the corresponding environment and install the required packages
+---
+
+## 📊 Recorded Results (StarCoderBase-7B, 200 programs, `g++ -c`)
+
+| Metric | Baseline | Repair | Δ |
+|---|---:|---:|---:|
+| `valid_rate` | 0.605 | **0.735** | **+0.130** |
+| `unique_valid_rate` | 0.485 | **0.690** | **+0.205** |
+| `duplicate_rate` | 0.120 | **0.045** | −0.075 |
+| `repair_success_rate` | — | **0.459** | — |
+| `total_compiled_ok` (of 200) | 121 | **147** | +26 |
+| Repaired programs accepted | — | **45** | — |
+
+- Full evidence: [`outputs/baseline_7b_200/`](outputs/baseline_7b_200), [`outputs/repair_7b_200/`](outputs/repair_7b_200) (`metrics.json`, `records.jsonl`, `.fuzz` and `_r*.fuzz` samples, `repair_cache.json`).
+- Evaluator example: [`outputs/eval_smoke/`](outputs/eval_smoke) (`summary.csv`, `summary_mean_std.json`).
+- Search-harness example: [`outputs/search/`](outputs/search) (`search_log.jsonl`, `next_prompt.md`).
+
+---
+
+## ⚖️ Design Tradeoffs
+
+Repair invests an additional LLM call on each failing program in exchange for recovering it. We measure this with `llm_overhead` (LLM calls per valid program produced), which is the standard cost-side metric for LLM-driven pipelines:
+
+| | Baseline | Repair |
+|---|---:|---:|
+| `llm_overhead` (calls per valid program) | ~0.4 | ~1.3 |
+| `valid_rate` | 0.605 | **0.735** |
+
+In short, repair spends roughly **one extra LLM call per valid program** in exchange for **+13 points of `valid_rate`** and **+20.5 points of `unique_valid_rate`**. Two design knobs keep this overhead bounded by construction:
+
+- **`error_gate`** — only specific failure classes (e.g. `compile_error`) trigger repair, so ICE / crash / timeout cases can be skipped.
+- **Repair cache (`repair_cache.json`)** — recurring failure signatures reuse a cached repair instead of calling the LLM again.
+
+For latency-sensitive runs, setting `repair.enabled: false` restores the original Fuzz4All behavior with zero overhead.
+
+---
+
+## ⚡ Setup
+
+Tested on Linux + CUDA (RTX 5000) with `conda` and Python 3.10. Docker is **not** required.
 
 ```bash
-conda create -n fuzz4all python=3.10
+conda create -n fuzz4all python=3.10 -y
 conda activate fuzz4all
-
 pip install -r requirements.txt
 pip install -e .
+export PYTHONPATH=$PWD:$PYTHONPATH
 ```
 
-Next, we need to quickly configure the environmental variables. Here are the default parameters:
+A C++ compiler must be on `PATH` (the target):
 
 ```bash
-export FUZZING_BATCH_SIZE=30
-export FUZZING_MODEL="bigcode/starcoderbase"
-export FUZZING_DEVICE="gpu"
-```
-or if you want to run Fuzz4All with local ollama mode:
-```bash
-export FUZZING_MODEL="ollama/starcoder"
+g++ --version   # any modern g++ that supports -std=c++23
 ```
 
-if you want to use other model than starcoder, please change the name of model after `ollama/*`. 
-Make sure you have model locally pulled.
-The exact parameters will depend on the machine you are running `Fuzz4All` on.
-
-> [!Note]
-> Currently `Fuzz4All` only supports starcoderbase and starcoderbase-1b models. However, one can easily modify 
-> the source code to include and use other models. See `model.py` for more detail.
-
-To use the autoprompting mechanism of `Fuzz4All` via GPT-4, please also export your openai key
-
-```
-export OPENAI_API_KEY={key_here}
-```
-
-### Fuzzing
-
-Now you are ready to run `Fuzz4All` on all targets (with arbitrary inputs through autoprompting)! 
-
-`Fuzz4All` is configured easily through config files. The one used for our experiment are store in `configs/`. 
-The config file controls various aspects of `Fuzz4All` including the fuzzing language, time, autoprompting strategy, etc.
-Please see any example config file in `configs/` for more detail. 
-
-In general, you can run `Fuzz4All` with the following command:
+If you want to use a gated HuggingFace model (e.g. `bigcode/starcoderbase-7b`), accept its license on the HuggingFace website once and then log in:
 
 ```bash
-python Fuzz4All/fuzz.py --config {config_file.yaml} main_with_config \ 
-                        --folder outputs/fuzzing_outputs \
-                        --batch_size {batch_size} \
-                        --model_name {model_name} \
-                        --target {target_name}
+python -c "from huggingface_hub import login; login()"
 ```
 
-where `{config_file.yaml}` is the config file you want to use, `{batch_size}` is the batch size you want to use, 
-`{model_name}` is the model name you want to use, and `{target_name}` is the target binary you want to fuzz.
+---
 
-> [!Note]
-> you will neede to build/download your own binary ({target_name}) for fuzzing
+## 🚀 Run the experiment in 3 steps
 
-For targeted fuzzing (i.e., fuzzing a specific API or library of a language), you can modify the config file to point to the 
-specific API/library documentation you want the model to generate prompts for. Please see `configs/targeted` for examples of such configs.
+### Step 1 — Baseline run
 
-<details><summary>You should see similar outputs to the following: </summary> 
-
-```
-BATCH_SIZE: 30
-MODEL_NAME: bigcode/starcoderbase
-DEVICE: gpu
-...
-=== Target Config ===
-language: smt2
-folder: outputs/full_run/cvc5/
-...
-====================
-[INFO] Initializing ... this may take a while ...
-[INFO] Loading model ...
-=== Model Config ===
-model_name: bigcode/starcoderbase
-...
-====================
-[INFO] Model Loaded
-[INFO] Use auto-prompting prompt ...
-Generating prompts... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:07:30
-[INFO] Done
- (resuming from 0)
-[VERBOSE] ; SMT2 is an input language commonly used by SMT solvers, with its syntax based on S-expressions. The multi-sorted logic accommodates a simple type system to confirm that terms from contrasting sorts
-aren't the equal. Uninterpreted functions can be declared, with the function symbol being an uninterpreted one. SMT2 supports various theories, including integer and real arithmetic, with basic logical
-connectives, quantifiers, and attribute annotations. An SMT2 theory includes sort and function symbol declarations and assertions of facts about them. Terms can be checked against these theories to determine their
-validity, with successful queries returning "unsat".
-; Please create a short program which uses complex SMT2 logic for an SMT solver
-(set-logic ALL)
-...
-(set-logic ALL)
-(assert (forall ((n Int)) (=> (> n 0) (= n (* 2 n)))))
-(check-sat)
-(exit)
-; Please create a short program which uses complex SMT2 logic for an SMT solver
-(set-logic ALL)
-
-Fuzzing •   0% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━     30/100000 • 0:02:26
-```
-</details>
-
-After fuzzing, you can find the generated fuzzing programs in `outputs/full_run/{target}/`. 
-
-<details>
-<summary>Here is the structure of the output directory: </summary>
-
-```
-- outputs/full_run/{target}/
-    - prompts 
-        - best_prompt.txt: the best prompt found by `Fuzz4All` for the target.
-        - greedy_prompt.txt
-        - prompt_0.txt
-        - prompt_1.txt
-        - prompt_2.txt
-        - scores.txt: keep track of the scores of each prompt (used to select the best prompt).
-    - 0.fuzz
-    - 1.fuzz
-    ... # 
-    - log.txt
-    - log_generation.txt
-    - log_validation.txt
-```
-</details>
-
-Most notably, we log both the generation and validation process in `log_generation.txt` and `log_validation.txt` respectively. Furthermore, `log.txt` provides an overview of the fuzzing process (including any potential bugs found by `Fuzz4All`) 
-
-Potential bugs will look like this in `log.txt`:
-
-```
-[VERBOSE] 2345.fuzz has potential error! # this indicates that file 2345.fuzz may have a potential bug
+```bash
+python Fuzz4All/fuzz.py --config config/cpp_demo.yaml main_with_config \
+  --folder outputs/baseline_run \
+  --batch_size 4 \
+  --model_name bigcode/starcoderbase-7b \
+  --target "$(command -v g++)"
 ```
 
-## ⚙️ Artifact
+### Step 2 — Repair-enabled run
 
-Please see [`README_artifact.md`](https://github.com/fuzz4all/fuzz4all/blob/master/README_artifact.md) and [Zenodo link](https://zenodo.org/records/10456883) for a more detailed explanation of Fuzz4All 
-as well as how to produce the complete results from our paper 
+```bash
+python Fuzz4All/fuzz.py --config config/cpp_repair_demo.yaml main_with_config \
+  --folder outputs/repair_run \
+  --batch_size 4 \
+  --model_name bigcode/starcoderbase-7b \
+  --target "$(command -v g++)"
+```
 
-## 🐛 Bugs Found
+### Step 3 — Compare metrics
 
-We have included a complete list of bugs found by `Fuzz4All` under `bugs/` folder.
+```bash
+echo "=== BASELINE ===" && python -m json.tool outputs/baseline_run/metrics.json
+echo "=== REPAIR  ===" && python -m json.tool outputs/repair_run/metrics.json
+```
 
-## 📝 Citation
+The repair run additionally produces `*_r1.fuzz`, `*_r2.fuzz` files for accepted repairs and a `repair_cache.json` keyed by normalized failure signature.
+
+> **Tip:** for a fast smoke test, swap the configs above for `config/cpp_smoke.yaml` and `config/cpp_repair_smoke.yaml`.
+
+---
+
+## 🧪 Evaluator (fixed budget, repeats)
+
+Run a candidate config under a fixed budget with multiple repeats and aggregate mean/std:
+
+```bash
+python tools/evaluate_candidate.py \
+  --candidate config/cpp_repair_demo.yaml \
+  --out outputs/eval_demo \
+  --budget_programs 100 \
+  --repeats 3 \
+  --target "$(command -v g++)"
+```
+
+Outputs:
+
+- `outputs/eval_demo/run_0/`, `run_1/`, `run_2/` — full per-run logs and `metrics.json`.
+- `outputs/eval_demo/summary.csv` — one row per repeat.
+- `outputs/eval_demo/summary_mean_std.json` — aggregated mean and std for every metric.
+
+---
+
+## 🔁 AI-driven search round
+
+1. Define candidates in JSON (see [`candidates/round_01.json`](candidates/round_01.json) for an example).
+2. Run a round:
+
+```bash
+python tools/run_search_round.py \
+  --round candidates/round_01.json \
+  --base_config config/cpp_repair_demo.yaml \
+  --budget_programs 100 \
+  --repeats 1
+```
+
+This will:
+
+- Materialize one YAML per candidate under `candidates/materialized/`.
+- Invoke the evaluator for each candidate.
+- Append all results to `outputs/search/search_log.jsonl`.
+- Generate `outputs/search/next_prompt.md` containing ranked metrics and instructions to propose the next round.
+
+You can paste `next_prompt.md` into any AI assistant to obtain the next candidate JSON. No paid API is called from the code.
+
+---
+
+## 📁 Repository layout
+
+```
+fuzz4all/
+├── Fuzz4All/
+│   ├── fuzz.py                      # main fuzzing loop (with repair hook)
+│   ├── repair/repair.py             # repair stage + RepairConfig + 6 templates
+│   ├── target/target.py             # ValidationResult, CompileStatus
+│   └── target/CPP/CPP.py            # g++ -c compile-only oracle
+├── prompts/repair/T1..T6.txt        # completion-style repair templates
+├── tools/
+│   ├── evaluate_candidate.py        # fixed-budget evaluator
+│   └── run_search_round.py          # AI-driven search harness
+├── config/
+│   ├── cpp_demo.yaml                # original baseline
+│   ├── cpp_repair_demo.yaml         # repair-enabled
+│   ├── cpp_smoke.yaml               # fast baseline smoke test
+│   └── cpp_repair_smoke.yaml        # fast repair smoke test
+├── candidates/
+│   ├── round_01.json                # example search round
+│   └── materialized/                # auto-generated YAMLs per candidate
+├── docs/
+│   ├── COURSE_PROJECT.md            # full extension docs (metrics, options)
+│   └── report.tex                   # IEEE-format project report
+├── outputs/                         # recorded evidence (baseline_7b_200, repair_7b_200, …)
+├── bugs/                            # bugs found by original Fuzz4All
+├── README.md                        # this file
+├── README_artifact.md               # original ICSE'24 artifact instructions
+├── requirements.txt
+└── setup.py
+```
+
+---
+
+## 📚 References
+
+- Original Fuzz4All paper: [arXiv:2308.04748](https://arxiv.org/abs/2308.04748)
+- Original artifact: [Zenodo 10456883](https://doi.org/10.5281/zenodo.10456883)
+- Course-extension docs: [`docs/COURSE_PROJECT.md`](docs/COURSE_PROJECT.md)
+- Course-project report: [`docs/report.tex`](docs/report.tex)
 
 ```bibtex
 @inproceedings{fuzz4all,
-  title = {Fuzz4All: Universal Fuzzing with Large Language Models},
-  author = {Xia, Chunqiu Steven and Paltenghi, Matteo and Tian, Jia Le and Pradel, Michael and Zhang, Lingming},
+  title     = {Fuzz4All: Universal Fuzzing with Large Language Models},
+  author    = {Xia, Chunqiu Steven and Paltenghi, Matteo and Tian, Jia Le and Pradel, Michael and Zhang, Lingming},
   booktitle = {Proceedings of the 46th International Conference on Software Engineering},
-  series = {ICSE '24},
-  year = {2024},
+  series    = {ICSE '24},
+  year      = {2024}
 }
 ```
-

@@ -1,0 +1,20 @@
+#include <iostream>
+
+
+int main(int argc, char const *argv[])
+{
+    #pragma GCC optimize ("O0")
+
+    int foo = 5;  
+    float pi = 3.14f;  
+    double d = 3.14;  
+
+    std::cout << foo << std::endl;
+
+     
+    foo++;
+
+    std::cout << foo << std::endl;
+
+    double d2 = (float)5;  
+}

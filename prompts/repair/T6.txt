@@ -1,9 +1,5 @@
-Fix the following C++ program so it compiles with g++ -std=c++23 and finishes compiling quickly. Reduce compile-heavy patterns: simplify complex templates, reduce recursion or large constexpr, avoid heavy metaprogramming that may cause timeouts.
-
-Program:
-{program}
-
-Compiler stderr:
-{stderr}
-
-Output ONLY the fixed C++ code. No explanations, no markdown. Prefer simpler code that compiles fast. The code must compile with -std=c++23 and must not require external files.
+// Original C++ code (too complex, simplify for faster compilation):
+{commented_program}
+// Compiler error: {stderr_first_line}
+// Simplified fixed version:
+{seed_line}

@@ -19,30 +19,41 @@ from rich.progress import (
 )
 
 from Fuzz4All.make_target import make_target_with_config
-from Fuzz4All.target.target import FResult, Target
-from Fuzz4All.target.target import CompileStatus
+from Fuzz4All.target.target import CompileStatus, FResult, Target
 from Fuzz4All.util.util import load_config_file
 
 try:
     from Fuzz4All.repair.repair import (
+        normalize_error_signature,
         repair_config_from_dict,
         repair_llm,
         should_repair,
-        normalize_error_signature,
     )
+
     HAS_REPAIR = True
 except ImportError:
     HAS_REPAIR = False
     from types import SimpleNamespace
+
     def repair_config_from_dict(d):
         return SimpleNamespace(
-            enabled=False, max_attempts=1, template_id="T1", include_stderr=True,
-            timeout_sec=3, cache=False, error_gate="compile_error", max_tokens=512, temperature=0.7,
+            enabled=False,
+            max_attempts=1,
+            template_id="T1",
+            include_stderr=True,
+            timeout_sec=3,
+            cache=False,
+            error_gate="compile_error",
+            max_tokens=512,
+            temperature=0.7,
         )
+
     def repair_llm(*args, **kwargs):
         return ""
+
     def should_repair(*args, **kwargs):
         return False
+
     def normalize_error_signature(s):
         return s or ""
 
@@ -83,9 +94,25 @@ def _save_repair_cache(output_folder: str, cache: dict):
     path = os.path.join(output_folder, "repair_cache.json")
     try:
         with open(path, "w", encoding="utf-8") as f:
-            json.dump(cache, f, indent=0)
+            json.dump(cache, f, indent=2)
     except Exception:
         pass
+
+
+def _sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _append_record(records_path: str, record: dict):
+    try:
+        with open(records_path, "a", encoding="utf-8") as rf:
+            rf.write(json.dumps(record) + "\n")
+    except Exception:
+        pass
+
+
+def _status_name(status) -> str:
+    return status.name if hasattr(status, "name") else str(status)
 
 
 def fuzz(
@@ -108,7 +135,7 @@ def fuzz(
     metrics = {
         "total_generated": 0,
         "total_compiled_ok": 0,
-        "valid_rate": 0.0,
+        "unique_generated_hashes": set(),
         "unique_valid_hashes": set(),
         "total_failures": 0,
         "unique_failure_signatures": set(),
@@ -132,11 +159,12 @@ def fuzz(
         start_time = time.time()
 
         if resume:
-            existing = [
-                f for f in os.listdir(output_folder)
-                if f.endswith(".fuzz")
+            existing = [f for f in os.listdir(output_folder) if f.endswith(".fuzz")]
+            n_existing = [
+                _base_id_from_fuzz_name(f)
+                for f in existing
+                if _base_id_from_fuzz_name(f) >= 0
             ]
-            n_existing = [_base_id_from_fuzz_name(f) for f in existing if _base_id_from_fuzz_name(f) >= 0]
             if n_existing:
                 count = max(n_existing) + 1
             log = f" (resuming from {count})"
@@ -144,111 +172,163 @@ def fuzz(
 
         p.update(task, advance=count)
 
-        while (
-            count < number_of_iterations
-            and time.time() - start_time < total_time * 3600
-        ):
+        while count < number_of_iterations and time.time() - start_time < total_time * 3600:
             fos = target.generate()
             if not fos:
                 target.initialize()
                 continue
-            metrics["llm_calls"] += 1
+            metrics["llm_calls"] += 1  # one generation batch call
             prev = []
-            for index, fo in enumerate(fos):
+            for fo in fos:
+                if count >= number_of_iterations:
+                    break
+
                 program_id = count
                 file_name = os.path.join(output_folder, f"{program_id}.fuzz")
                 write_to_file(fo, file_name)
                 count += 1
                 p.update(task, advance=1)
                 metrics["total_generated"] += 1
-                t0 = time.perf_counter()
 
-                program_hash = hashlib.sha256(fo.encode("utf-8")).hexdigest()
+                program_start = time.perf_counter()
+                program_hash = _sha256_text(fo)
+                metrics["unique_generated_hashes"].add(program_hash)
                 program_bytes = len(fo.encode("utf-8"))
-                llm_calls_this = 1
-                repair_attempted = False
+                timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+                if not otf:
+                    _append_record(
+                        records_path,
+                        {
+                            "program_id": program_id,
+                            "is_repair": False,
+                            "repair_attempt_index": None,
+                            "compile_status": "NOT_VALIDATED",
+                            "signature": "",
+                            "exit_code": 0,
+                            "elapsed_sec": 0.0,
+                            "program_hash": program_hash,
+                            "bytes": program_bytes,
+                            "llm_calls_used": 1,
+                            "timestamp": timestamp,
+                        },
+                    )
+                    continue
+
+                vr = target.validate_individual(file_name)
+                compile_status = _status_name(vr.status)
+                signature = vr.signature or ""
+                exit_code = vr.exit_code
+
+                _append_record(
+                    records_path,
+                    {
+                        "program_id": program_id,
+                        "is_repair": False,
+                        "repair_attempt_index": None,
+                        "compile_status": compile_status,
+                        "signature": signature[:500] if signature else "",
+                        "exit_code": exit_code,
+                        "elapsed_sec": round(vr.elapsed_sec, 4),
+                        "program_hash": program_hash,
+                        "bytes": program_bytes,
+                        "llm_calls_used": 1,
+                        "timestamp": timestamp,
+                    },
+                )
+
+                target.parse_validation_message(vr.fresult, vr.message, file_name)
+
+                if vr.status == CompileStatus.OK:
+                    metrics["total_compiled_ok"] += 1
+                    metrics["unique_valid_hashes"].add(program_hash)
+                    prev.append((FResult.SAFE, fo))
+                    metrics["program_times"].append(time.perf_counter() - program_start)
+                    continue
+
+                metrics["total_failures"] += 1
+                metrics["unique_failure_signatures"].add(signature)
+
                 repair_success = False
-                repair_attempt_index = -1
-                compile_status = "unknown"
-                signature = ""
-                exit_code = 0
-                elapsed_sec = 0.0
-
-                if otf:
-                    vr = target.validate_individual(file_name)
-                    elapsed_sec = time.perf_counter() - t0
-                    metrics["program_times"].append(elapsed_sec)
-                    compile_status = vr.status.name if hasattr(vr.status, "name") else str(vr.status)
-                    signature = vr.signature or ""
-                    exit_code = vr.exit_code
-
-                    if vr.status == CompileStatus.OK:
-                        metrics["total_compiled_ok"] += 1
-                        metrics["unique_valid_hashes"].add(program_hash)
-                    else:
-                        metrics["total_failures"] += 1
-                        metrics["unique_failure_signatures"].add(signature)
-
-                    target.parse_validation_message(vr.fresult, vr.message, file_name)
-
-                    if vr.status != CompileStatus.OK and repair_enabled and should_repair(vr, repair_config.error_gate):
-                        repair_attempted = True
-                        metrics["repair_attempted_count"] += 1
-                        cached_code = None
-                        if repair_config.cache:
-                            key = normalize_error_signature(signature)
-                            cached_code = repair_cache.get(key)
-                            if cached_code is not None:
-                                metrics["cache_hit_count"] += 1
-                        if cached_code is None:
-                            metrics["cache_miss_count"] += 1
-                            llm_calls_this += 1
-                            metrics["llm_calls"] += 1
-                            try:
-                                repaired = repair_llm(target, fo, vr.stderr or vr.message, repair_config)
-                                if repair_config.cache and repaired:
-                                    repair_cache[normalize_error_signature(signature)] = repaired
-                                cached_code = repaired
-                            except Exception:
-                                cached_code = None
+                if repair_enabled and should_repair(vr, repair_config.error_gate):
+                    metrics["repair_attempted_count"] += 1
+                    cache_key = normalize_error_signature(signature)
+                    cached_code = None
+                    used_cache_first = False
+                    if repair_config.cache and cache_key:
+                        cached_code = repair_cache.get(cache_key)
                         if cached_code:
-                            for attempt in range(1, repair_config.max_attempts + 1):
-                                repair_attempt_index = attempt
-                                repair_file = os.path.join(output_folder, f"{program_id}_r{attempt}.fuzz")
-                                write_to_file(cached_code, repair_file)
-                                vr_repair = target.validate_individual(repair_file)
-                                if vr_repair.status == CompileStatus.OK:
-                                    repair_success = True
-                                    metrics["repair_success_count"] += 1
-                                    metrics["total_compiled_ok"] += 1
-                                    metrics["unique_valid_hashes"].add(hashlib.sha256(cached_code.encode("utf-8")).hexdigest())
-                                    prev.append((FResult.SAFE, cached_code))
-                                    target.parse_validation_message(vr_repair.fresult, vr_repair.message, repair_file)
-                                    break
-                        if not repair_success:
-                            prev.append((vr.fresult, fo))
-                    else:
-                        prev.append((vr.fresult, fo))
-                # when otf is False we do not append to prev (original behavior)
+                            metrics["cache_hit_count"] += 1
+                            used_cache_first = True
+                        else:
+                            metrics["cache_miss_count"] += 1
 
-                record = {
-                    "program_id": program_id,
-                    "is_repair": repair_attempted,
-                    "repair_attempt_index": repair_attempt_index if repair_attempted else None,
-                    "compile_status": compile_status,
-                    "signature": signature[:500] if signature else "",
-                    "exit_code": exit_code,
-                    "elapsed_sec": round(elapsed_sec, 4),
-                    "program_hash": program_hash,
-                    "bytes": program_bytes,
-                    "llm_calls_used": llm_calls_this,
-                    "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                }
-                try:
-                    with open(records_path, "a", encoding="utf-8") as rf:
-                        rf.write(json.dumps(record) + "\n")
-                except Exception:
-                    pass
+                    for attempt in range(1, repair_config.max_attempts + 1):
+                        llm_calls_this_attempt = 0
+                        if attempt == 1 and cached_code:
+                            repaired_code = cached_code
+                        else:
+                            try:
+                                repaired_code = repair_llm(
+                                    target,
+                                    fo,
+                                    vr.stderr or vr.message,
+                                    repair_config,
+                                )
+                                if repaired_code:
+                                    metrics["llm_calls"] += 1
+                                    llm_calls_this_attempt = 1
+                                    if repair_config.cache and cache_key and not used_cache_first:
+                                        repair_cache[cache_key] = repaired_code
+                            except Exception:
+                                repaired_code = ""
+
+                        if not repaired_code:
+                            continue
+
+                        repair_file = os.path.join(output_folder, f"{program_id}_r{attempt}.fuzz")
+                        write_to_file(repaired_code, repair_file)
+                        repair_hash = _sha256_text(repaired_code)
+                        repair_bytes = len(repaired_code.encode("utf-8"))
+                        vr_repair = target.validate_individual(repair_file)
+                        repair_status = _status_name(vr_repair.status)
+                        repair_signature = vr_repair.signature or ""
+
+                        _append_record(
+                            records_path,
+                            {
+                                "program_id": program_id,
+                                "is_repair": True,
+                                "repair_attempt_index": attempt,
+                                "compile_status": repair_status,
+                                "signature": repair_signature[:500] if repair_signature else "",
+                                "exit_code": vr_repair.exit_code,
+                                "elapsed_sec": round(vr_repair.elapsed_sec, 4),
+                                "program_hash": repair_hash,
+                                "bytes": repair_bytes,
+                                "llm_calls_used": llm_calls_this_attempt,
+                                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                            },
+                        )
+
+                        if vr_repair.status != CompileStatus.OK and repair_signature:
+                            metrics["unique_failure_signatures"].add(repair_signature)
+
+                        if vr_repair.status == CompileStatus.OK:
+                            repair_success = True
+                            metrics["repair_success_count"] += 1
+                            metrics["total_compiled_ok"] += 1
+                            metrics["unique_valid_hashes"].add(repair_hash)
+                            prev.append((FResult.SAFE, repaired_code))
+                            target.parse_validation_message(
+                                vr_repair.fresult, vr_repair.message, repair_file
+                            )
+                            break
+
+                if not repair_success:
+                    prev.append((vr.fresult, fo))
+
+                metrics["program_times"].append(time.perf_counter() - program_start)
 
             if repair_config.cache and repair_cache:
                 _save_repair_cache(output_folder, repair_cache)
@@ -256,6 +336,7 @@ def fuzz(
 
     total = metrics["total_generated"]
     ok = metrics["total_compiled_ok"]
+    unique_generated = len(metrics["unique_generated_hashes"])
     unique_valid = len(metrics["unique_valid_hashes"])
     failures = metrics["total_failures"]
     unique_fail = len(metrics["unique_failure_signatures"])
@@ -266,12 +347,16 @@ def fuzz(
         "total_compiled_ok": ok,
         "valid_rate": ok / total if total else 0.0,
         "unique_valid_rate": unique_valid / total if total else 0.0,
-        "duplicate_rate": 1.0 - (unique_valid / ok) if ok else 0.0,
+        "duplicate_rate": 1.0 - (unique_generated / total) if total else 0.0,
         "total_failures": failures,
         "unique_failure_count": unique_fail,
         "repair_attempted_count": metrics["repair_attempted_count"],
         "repair_success_count": metrics["repair_success_count"],
-        "repair_success_rate": metrics["repair_success_count"] / metrics["repair_attempted_count"] if metrics["repair_attempted_count"] else 0.0,
+        "repair_success_rate": (
+            metrics["repair_success_count"] / metrics["repair_attempted_count"]
+            if metrics["repair_attempted_count"]
+            else 0.0
+        ),
         "cache_hit_count": metrics["cache_hit_count"],
         "cache_miss_count": metrics["cache_miss_count"],
         "avg_time_per_program": round(avg_time, 4),

@@ -1,0 +1,49 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz: In function ‘int main(int, char**)’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:7:14: error: no match for ‘operator>>’ (operand types are ‘std::istream’ {aka ‘std::basic_istream<char>’} and ‘const char*’)
+    7 |     std::cin >> input >> n;
+      |     ~~~~~~~~ ^~ ~~~~~
+      |          |      |
+      |          |      const char*
+      |          std::istream {aka std::basic_istream<char>}
+In file included from /usr/include/c++/11/iostream:40,
+                 from /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:1:
+/usr/include/c++/11/istream:168:7: note: candidate: ‘std::basic_istream<_CharT, _Traits>::__istream_type& std::basic_istream<_CharT, _Traits>::operator>>(bool&) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_istream<_CharT, _Traits>::__istream_type = std::basic_istream<char>]’ (near match)
+  168 |       operator>>(bool& __n)
+      |       ^~~~~~~~
+/usr/include/c++/11/istream:168:7: note:   conversion of argument 1 would be ill-formed:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:7:17: error: cannot bind non-const lvalue reference of type ‘bool&’ to a value of type ‘const char*’
+    7 |     std::cin >> input >> n;
+      |                 ^~~~~
+In file included from /usr/include/c++/11/iostream:40,
+                 from /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:1:
+/usr/include/c++/11/istream:172:7: note: candidate: ‘std::basic_istream<_CharT, _Traits>& std::basic_istream<_CharT, _Traits>::operator>>(short int&) [with _CharT = char; _Traits = std::char_traits<char>]’ (near match)
+  172 |       operator>>(short& __n);
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/3.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/3.fuzz:4:10: fatal error: String.h: No such file or directory
+    4 | #include "String.h"
+      |          ^~~~~~~~~~
+compilation terminated.
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/5.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz: In function ‘int main(int, char**)’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz:5:20: error: ‘String’ does not name a type
+    5 |     auto res = new String{"Hello World"};
+      |                    ^~~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz:4:1: error: ‘::main’ must return ‘int’
+    4 | void main()
+      | ^~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz:5:2: error: #endif without #if
+    5 | #endif
+      |  ^~~~~

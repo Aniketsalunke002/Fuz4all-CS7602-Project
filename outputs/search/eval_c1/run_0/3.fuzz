@@ -1,0 +1,12 @@
+#include <iostream>
+
+
+#include "String.h"
+
+String newString(std::string first, std::string second);
+
+
+int main() {
+    std::cout << newString("A", "B") << std::endl;
+    return 0;
+}

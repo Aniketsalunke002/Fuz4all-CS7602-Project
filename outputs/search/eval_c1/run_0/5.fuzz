@@ -1,0 +1,12 @@
+#include <iostream>
+
+
+#include <string>
+#include <queue>
+
+struct Node
+{
+   int val;
+   bool visited;
+   std::queue<int> path;
+};

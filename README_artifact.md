@@ -180,11 +180,11 @@ export FUZZING_DEVICE="gpu"
 > Note currently we only support either bigcode/starcoderbase-1b or bigcode/starcoderbase in terms of model (in none-distributed setup),
 > however Fuzz4All can be modified easily to support other models/architectures.
 
-Before you start, you need to export OpenAI API key to the environment variable `OPENAI_API_KEY`, 
-here we provide a key (which will be removed after end of evaluation period) for you to test:
+Before you start, if you want to use OpenAI-backed paths in the original artifact, export your own OpenAI API key:
 ```
 export OPENAI_API_KEY=<your_openai_api_key_here>
 ```
+Note: the course-extension flow in this repo (C++ + StarCoderBase + error-guided repair) does **not** require any OpenAI API key.
 
 #### 1. Simple Script.
 

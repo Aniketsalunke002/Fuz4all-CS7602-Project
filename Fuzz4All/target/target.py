@@ -56,7 +56,9 @@ def compile_status_to_fresult(status: CompileStatus) -> FResult:
         return FResult.SAFE
     if status == CompileStatus.COMPILE_ERROR:
         return FResult.FAILURE
-    return FResult.ERROR  # ICE, CRASH, TIMEOUT
+    if status == CompileStatus.TIMEOUT:
+        return FResult.TIMED_OUT
+    return FResult.ERROR  # ICE, CRASH
 
 
 STDERR_TRUNCATE_LINES = 20

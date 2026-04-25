@@ -1,0 +1,2 @@
+run_id,total_generated,total_compiled_ok,valid_rate,unique_valid_rate,duplicate_rate,total_failures,unique_failure_count,repair_attempted_count,repair_success_count,repair_success_rate,cache_hit_count,cache_miss_count,avg_time_per_program,llm_overhead
+0,10,7,0.7,0.7,0.0,3,3,3,0,0.0,0,3,0.2427,0.2857142857142857

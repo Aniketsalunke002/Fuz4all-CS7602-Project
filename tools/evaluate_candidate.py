@@ -48,7 +48,7 @@ def run_one(candidate_path: str, run_dir: str, budget_programs: int, repo_root: 
     config["fuzzing"] = config.get("fuzzing", {})
     config["fuzzing"]["num"] = budget_programs
     config["fuzzing"]["total_time"] = 48
-    config["fuzzing"]["resume"] = False
+    config["fuzzing"]["resume"] = True
     config["fuzzing"]["otf"] = True
     target = target_binary or config.get("fuzzing", {}).get("target_name") or "/usr/bin/g++"
     config["fuzzing"]["target_name"] = target

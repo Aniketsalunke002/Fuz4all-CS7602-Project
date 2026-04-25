@@ -1,0 +1,115 @@
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main(int argc, char* argv[])
+{
+    const char* input;
+    int n;
+    std::cin >> input >> n;
+    std::cout << n / 2 + n % 2 << std::endl;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main() {
+  std::cout << "Hello World!";
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+using namespace std;
+
+class test {};
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+#include "String.h"
+
+String newString(std::string first, std::string second);
+
+
+int main() {
+    std::cout << newString("A", "B") << std::endl;
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+#include <string>
+#include <queue>
+
+struct Node
+{
+   int val;
+   bool visited;
+   std::queue<int> path;
+};
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main(int argc, char* argv[])
+{
+    auto res = new String{"Hello World"};
+    (*res).append("!");
+
+    std::cout << *res << std::endl;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+namespace CPlusPlus {
+    int add(int a, int b) {
+      return a + b;
+    }
+
+    int multiply(int a, int b) {
+      return a * b;
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+void main()
+{
+    std::string str = "Hello";
+    std::cout << str.capacity() << '\n';
+    str.resize(5);
+    std::cout << str.capacity() << '\n';
+    str.resize(2, 'C');
+    std::cout << str.capacity() << '\n';
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+double max_power(double a, double b);
+#endif	 
+[VERBOSE] ========== sample =========

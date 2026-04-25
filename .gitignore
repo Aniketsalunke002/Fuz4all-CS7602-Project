@@ -161,11 +161,31 @@ cython_debug/
 .idea/
 
 # some project specific stuff
-outputs/
-
-# data files
-*.jsonl
-*.json
+# Ignore output runs by default, but keep evidence runs from the course extension
+outputs/*
+!outputs/baseline_7b_200/
+!outputs/repair_7b_200/
+!outputs/eval_smoke/
+!outputs/search/
 
 # Jupyter Notebooks
 *.ipynb
+
+# Editor / OS
+.vscode/
+.DS_Store
+*.swp
+*.swo
+
+# LaTeX intermediates
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Slurm
+slurm-*.out
+slurm-*.err

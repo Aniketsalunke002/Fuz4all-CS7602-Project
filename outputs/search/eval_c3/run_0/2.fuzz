@@ -1,0 +1,21 @@
+#include <iostream>
+
+
+template <class T>
+void swap(T &a, T &b)
+{
+	T temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+
+int swap(int *a, int *b)
+{
+	int r;
+	swap(a, b);
+	r = *a;
+	*a = *b;
+	*b = r;
+	return 0;
+}

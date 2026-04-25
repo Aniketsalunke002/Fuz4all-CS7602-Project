@@ -1,0 +1,23 @@
+#include <iostream>
+
+
+namespace {
+    using namespace std;
+     
+    void printString(const string& s) {
+        cout << s << endl;
+    }
+     
+    using function = std::function<void(void)>;
+     
+}
+
+int main() {
+     
+     
+    function printVoid = [](void) { cout << "In the function\n"; };
+    cout << "Hello world!" << endl;
+    printString("Clang - " + "GCC" + " - " + "Microsoft");
+    printVoid();
+    return 0;
+}

@@ -1,0 +1,9 @@
+#include <iostream>
+
+int main(int argc, char* argv[])
+{
+    auto res = new String{"Hello World"};
+    (*res).append("!");
+
+    std::cout << *res << std::endl;
+}

@@ -1,0 +1,10 @@
+#include <iostream>
+
+int main(int argc, char* argv[])
+{
+    const char* input;
+    int n;
+    std::cin >> input >> n;
+    std::cout << n / 2 + n % 2 << std::endl;
+    return 0;
+}

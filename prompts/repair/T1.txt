@@ -1,9 +1,5 @@
-Fix the following C++ program so it compiles with g++ -std=c++23. Make the smallest change needed.
-
-Program:
-{program}
-
-Compiler stderr:
-{stderr}
-
-Output ONLY the fixed C++ code. No explanations, no markdown. The code must compile with -std=c++23 and must not require external files.
+// Original C++ code (has compilation error):
+{commented_program}
+// Compiler error: {stderr_first_line}
+// Fixed version of the code above:
+{seed_line}

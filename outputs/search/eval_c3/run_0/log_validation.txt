@@ -1,0 +1,71 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz:5:7: error: size of array ‘a’ is not an integral constant-expression
+    5 | int a[n] = {53, 23, 75, 10,};
+      |       ^
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz:5:28: error: too many initializers for ‘int [1]’
+    5 | int a[n] = {53, 23, 75, 10,};
+      |                            ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/1.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/1.fuzz:6:2: error: #endif without #if
+    6 | #endif
+      |  ^~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/3.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:45:5: error: unterminated comment
+   45 |     /* Inserts a node
+      |     ^
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:43:41: error: expected ‘}’ at end of input
+   43 |     int dataAtPosition(int index) const;
+      |                                         ^
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:28:1: note: to match this ‘{’
+   28 | {
+      | ^
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:43:41: error: expected unqualified-id at end of input
+   43 |     int dataAtPosition(int index) const;
+      |                                         ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:11:27: error: ‘function’ in namespace ‘std’ does not name a template type
+   11 |     using function = std::function<void(void)>;
+      |                           ^~~~~~~~
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:2:1: note: ‘std::function’ is defined in header ‘<functional>’; did you forget to ‘#include <functional>’?
+    1 | #include <iostream>
+  +++ |+#include <functional>
+    2 | 
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:18:5: error: ‘function’ was not declared in this scope; did you mean ‘union’?
+   18 |     function printVoid = [](void) { cout << "In the function\n"; };
+      |     ^~~~~~~~
+      |     union
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:20:28: error: invalid operands of types ‘const char [9]’ and ‘const char [4]’ to binary ‘operator+’
+   20 |     printString("Clang - " + "GCC" + " - " + "Microsoft");
+      |                 ~~~~~~~~~~ ^ ~~~~~
+      |                 |            |
+      |                 |            const char [4]
+      |                 const char [9]
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:21:5: error: ‘printVoid’ was not declared in this scope
+   21 |     printVoid();
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz:11:35: error: ‘setprecision’ was not declared in this scope
+   11 |         cout << "8.677" << "C" << setprecision(3) << fixed << endl;
+      |                                   ^~~~~~~~~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/8.fuzz:6:17: error: ‘Cxx17’ is not a namespace-name
+    6 | using namespace Cxx17;
+      |                 ^~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz:4:2: error: #else without #if
+    4 | #else
+      |  ^~~~
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz:6:2: error: #endif without #if
+    6 | #endif
+      |  ^~~~~
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz:9:10: fatal error: std_algorithms.h: No such file or directory
+    9 | #include "std_algorithms.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.

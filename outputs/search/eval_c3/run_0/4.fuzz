@@ -1,0 +1,45 @@
+#include <iostream>
+
+
+struct Node;
+class ArrayList;
+class Collection;
+
+void printNodeList(Node *head);
+void printArrayList(ArrayList *arr);
+
+class Node
+{
+ public:
+     
+    Node *next;
+
+     
+    int value;
+
+     
+    Node(int value_in);
+
+     
+    ~Node();
+};
+
+class ArrayList
+{
+ public:
+     
+    Node *head;
+
+     
+    int head_capacity;
+
+     
+    void addNode(Node *node, int data);
+
+     
+    int numItems() const;
+
+     
+    int dataAtPosition(int index) const;
+
+    /* Inserts a node

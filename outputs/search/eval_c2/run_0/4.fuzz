@@ -1,0 +1,24 @@
+#include <iostream>
+
+ 
+class B {
+public:
+  int b;
+  B(B &other) : b(other.b + 1) {}
+  B() : b(1) {}
+  ~B() {}
+  int* f() {
+    std::cout << "B " << b << '\n';
+    return &b;
+  }
+};
+void test() {
+  B b;
+  new ::B(b);
+  ::B b2 = B(b);
+  B *b3 = b2.f();
+}
+ 
+int main() {
+}
+

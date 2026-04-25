@@ -1,0 +1,37 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz: In function ‘int main(int, const char**)’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz:6:13: error: ‘#pragma GCC optimize’ is not allowed inside functions
+    6 |     #pragma GCC optimize ("O0")
+      |             ^~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/3.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz: In function ‘void test()’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz:19:15: error: cannot convert ‘int*’ to ‘B*’ in initialization
+   19 |   B *b3 = b2.f();
+      |           ~~~~^~
+      |               |
+      |               int*
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz:7:2: warning: #warning std::string does not store char [-Wcpp]
+    7 | #warning std::string does not store char
+      |  ^~~~~~~
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz:6:39: error: array must be initialized with a brace-enclosed initializer
+    6 |                 new std::string[1][1](counter);
+      |                                       ^~~~~~~
+/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz:6:46: error: array must be initialized with a brace-enclosed initializer
+    6 |                 new std::string[1][1](counter);
+      |                                              ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/6.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/8.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/9.fuzz is safe

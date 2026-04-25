@@ -15,13 +15,6 @@ from Fuzz4All.target.target import (
 from Fuzz4All.util.Logger import LEVEL
 from Fuzz4All.util.util import comment_remover
 
-main_code = """
-int main(){
-return 0;
-}
-"""
-
-
 class CPPTarget(Target):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -98,14 +91,14 @@ class CPPTarget(Target):
         return "COMPILE:" + first_line[:300]
 
     def validate_compiler(self, compiler, filename) -> ValidationResult:
-        # check without -c option (+ linking)
+        out_obj = f"/tmp/out{self.CURRENT_TIME}.o"
         start = time.perf_counter()
         timed_out = False
         stderr_text = ""
         exit_code_val = 0
         try:
             result = subprocess.run(
-                f"{compiler} -x c++ -std=c++23 {filename} -o /tmp/out{self.CURRENT_TIME}",
+                f"{compiler} -x c++ -std=c++23 -O0 -fdiagnostics-color=never -c {filename} -o {out_obj}",
                 shell=True,
                 capture_output=True,
                 encoding="utf-8",
@@ -143,42 +136,6 @@ class CPPTarget(Target):
                 signature=sig,
             )
 
-        if exit_code_val == 1:
-            if "undefined reference to `main'" in stderr_text:
-                try:
-                    with open(filename, "r", encoding="utf-8") as f:
-                        code = f.read()
-                except Exception:
-                    pass
-                self.write_back_file(code + main_code)
-                start2 = time.perf_counter()
-                result2 = subprocess.run(
-                    f"{compiler} -std=c++23 -x c++ /tmp/temp{self.CURRENT_TIME}.cpp -o /tmp/out{self.CURRENT_TIME}",
-                    shell=True,
-                    capture_output=True,
-                    encoding="utf-8",
-                    text=True,
-                )
-                elapsed += time.perf_counter() - start2
-                if result2.returncode == 0:
-                    return ValidationResult(
-                        status=CompileStatus.OK,
-                        exit_code=0,
-                        elapsed_sec=elapsed,
-                        stderr="",
-                        signature="",
-                    )
-                stderr_text = result2.stderr or ""
-                exit_code_val = result2.returncode
-            sig = self._normalize_signature(stderr_text, exit_code_val, False)
-            stderr_truncated = _truncate_stderr(stderr_text)
-            return ValidationResult(
-                status=CompileStatus.COMPILE_ERROR,
-                exit_code=exit_code_val,
-                elapsed_sec=elapsed,
-                stderr=stderr_truncated,
-                signature=sig,
-            )
         if exit_code_val != 0:
             stderr_lower = (stderr_text or "").lower()
             if "internal compiler error" in stderr_lower:

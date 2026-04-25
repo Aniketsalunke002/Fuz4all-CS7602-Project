@@ -52,6 +52,35 @@ def _default_template_dir() -> Path:
     return repo / "prompts" / "repair"
 
 
+def _comment_out_program(program_text: str) -> str:
+    """Convert program lines to C++ comment lines for completion-style prompts."""
+    lines = program_text.strip().split("\n")
+    return "\n".join(f"// {line}" for line in lines)
+
+
+def _extract_seed_line(program_text: str) -> str:
+    """Extract the first meaningful line to seed the completion (e.g. #include)."""
+    for line in program_text.strip().split("\n"):
+        stripped = line.strip()
+        if stripped.startswith("#include"):
+            return stripped
+        if stripped and not stripped.startswith("//") and not stripped.startswith("/*"):
+            return stripped
+    return "#include <iostream>"
+
+
+def _first_stderr_line(stderr_text: str) -> str:
+    """Extract the first non-empty error line from stderr."""
+    if not stderr_text:
+        return "compilation error"
+    for line in stderr_text.strip().split("\n"):
+        line = line.strip()
+        if "error:" in line.lower():
+            return line[:200]
+    first = stderr_text.strip().split("\n")[0]
+    return first[:200] if first else "compilation error"
+
+
 def build_repair_prompt(
     template_id: str,
     program_text: str,
@@ -67,9 +96,24 @@ def build_repair_prompt(
     try:
         template = path.read_text(encoding="utf-8")
     except Exception:
-        template = "Fix the following C++ program so it compiles with g++ -std=c++23.\n\nProgram:\n{program}\n\nCompiler stderr:\n{stderr}\n\nOutput ONLY the fixed C++ code, no explanations."
-    prompt = template.replace("{program}", program_text).replace(
-        "{stderr}", stderr_text[:4000] if stderr_text else "(no stderr)"
+        template = (
+            "// Original C++ code (has compilation error):\n"
+            "{commented_program}\n"
+            "// Compiler error: {stderr_first_line}\n"
+            "// Fixed version of the code above:\n"
+            "{seed_line}"
+        )
+    commented = _comment_out_program(program_text)
+    seed = _extract_seed_line(program_text)
+    first_err = _first_stderr_line(stderr_text)
+
+    prompt = (
+        template
+        .replace("{commented_program}", commented)
+        .replace("{stderr_first_line}", first_err)
+        .replace("{seed_line}", seed)
+        .replace("{program}", program_text)
+        .replace("{stderr}", stderr_text[:4000] if stderr_text else "(no stderr)")
     )
     return prompt
 
@@ -91,7 +135,14 @@ def extract_program_from_model_output(text: str) -> str:
         first = re.search(r"```(?:cpp|c\+\+)?\s*\n(.*)", s, re.DOTALL)
         if first:
             return first.group(1).strip()
-    return s
+    code_lines = []
+    for line in s.split("\n"):
+        stripped = line.strip()
+        if stripped.startswith("//") and ("Original" in stripped or "error:" in stripped.lower() or "Fixed" in stripped):
+            continue
+        code_lines.append(line)
+    result = "\n".join(code_lines).strip()
+    return result if result else s
 
 
 def normalize_error_signature(signature: str) -> str:
@@ -115,12 +166,14 @@ def repair_llm(
         stderr_text if config.include_stderr else "",
         template_dir=template_dir,
     )
+    seed = _extract_seed_line(program_text)
     raw = target.generate_single(
         prompt,
         max_length=config.max_tokens,
         temperature=config.temperature,
     )
-    return extract_program_from_model_output(raw)
+    full_output = seed + "\n" + raw if raw else ""
+    return extract_program_from_model_output(full_output)
 
 
 def repair_config_from_dict(d: Optional[Dict[str, Any]]) -> RepairConfig:

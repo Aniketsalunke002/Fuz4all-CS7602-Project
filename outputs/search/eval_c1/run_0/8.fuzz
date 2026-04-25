@@ -1,0 +1,12 @@
+#include <iostream>
+
+
+void main()
+{
+    std::string str = "Hello";
+    std::cout << str.capacity() << '\n';
+    str.resize(5);
+    std::cout << str.capacity() << '\n';
+    str.resize(2, 'C');
+    std::cout << str.capacity() << '\n';
+}

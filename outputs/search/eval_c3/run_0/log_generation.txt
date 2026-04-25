@@ -1,0 +1,182 @@
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+using namespace std;
+int n = 2;   
+int a[n] = {53, 23, 75, 10,};
+int i = 0;
+int main()
+{
+    a[i] = 29;      
+    i++;           
+    cout << a[0];   
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main(){}
+
+#endif	 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+template <class T>
+void swap(T &a, T &b)
+{
+	T temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+
+int swap(int *a, int *b)
+{
+	int r;
+	swap(a, b);
+	r = *a;
+	*a = *b;
+	*b = r;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int count(int i);
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+struct Node;
+class ArrayList;
+class Collection;
+
+void printNodeList(Node *head);
+void printArrayList(ArrayList *arr);
+
+class Node
+{
+ public:
+     
+    Node *next;
+
+     
+    int value;
+
+     
+    Node(int value_in);
+
+     
+    ~Node();
+};
+
+class ArrayList
+{
+ public:
+     
+    Node *head;
+
+     
+    int head_capacity;
+
+     
+    void addNode(Node *node, int data);
+
+     
+    int numItems() const;
+
+     
+    int dataAtPosition(int index) const;
+
+    /* Inserts a node
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+namespace {
+    using namespace std;
+     
+    void printString(const string& s) {
+        cout << s << endl;
+    }
+     
+    using function = std::function<void(void)>;
+     
+}
+
+int main() {
+     
+     
+    function printVoid = [](void) { cout << "In the function\n"; };
+    cout << "Hello world!" << endl;
+    printString("Clang - " + "GCC" + " - " + "Microsoft");
+    printVoid();
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <cmath>
+using namespace std;
+float pi=3.1415;
+int main() 
+{
+	float num = 6.18f;
+	cout << num << "PI is " << pi << endl;
+	cout << 5-num << endl;
+	cout << "8.677" << "C" << setprecision(3) << fixed << endl;
+    cout << 5 <<'/' << 2 << endl;
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main()
+{
+     
+    std::string myString = "ABC";
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+using namespace std;
+
+using namespace Cxx17;
+
+int main() {
+     
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <algorithm>
+#else
+#include <cstdlib>
+#endif
+
+ 
+#include "std_algorithms.h"
+
+[VERBOSE] ========== sample =========
