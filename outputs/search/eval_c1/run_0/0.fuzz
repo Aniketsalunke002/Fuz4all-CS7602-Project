@@ -1,10 +1,15 @@
 #include <iostream>
 
-int main(int argc, char* argv[])
+int
+main ()
 {
-    const char* input;
-    int n;
-    std::cin >> input >> n;
-    std::cout << n / 2 + n % 2 << std::endl;
+    int a= 2 + 3; cout << "a=" << a;
+    char *p = "hello"; 
+    cout << "strlen(" << p 
+        << ") = " << strlen(p) << endl;
+     
+     
+     
+     
     return 0;
 }

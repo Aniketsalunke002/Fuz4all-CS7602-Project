@@ -1,0 +1,10 @@
+#include <iostream>
+
+#include <stack>
+int main()
+{
+    std::stack<int> s;
+    s.pop();
+    s.pop();
+    s.push(5);
+    s.push(3

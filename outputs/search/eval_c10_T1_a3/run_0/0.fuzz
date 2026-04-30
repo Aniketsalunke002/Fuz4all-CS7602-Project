@@ -1,0 +1,88 @@
+#include <iostream>
+
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <cassert>
+
+std::vector<std::string> split(const std::string& s, char delim);
+
+std::vector<std::string> split(const std::string& s, const std::string& delim)
+{
+    std::vector<std::string> tokens;
+    std::string token;
+    bool in_delim = false;
+    for (auto i = s.begin(); i!= s.end(); ++i) {
+        if (i!= s.begin() && delim == *i) {
+            in_delim = true;
+            continue;
+        }
+
+        if (in_delim) {
+            if (i!= s.end() && delim.find(*i) == std::string::npos) {
+                i++;
+            }
+            token += *i;
+        } else {
+            if (*i == delim) {
+                tokens.push_back(token);
+                token.clear();
+                in_delim = true;
+            }
+        }
+    }
+    if (!token.empty()) {
+        tokens.push_back(token);
+    }
+
+    return tokens;
+}
+
+
+int main()
+{
+     
+     
+    std::vector<std::string> v{ "cat", "dog", "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v.begin(), v.end());
+    std::cout << "Sorted vector: " << v << std::endl;
+
+    std::vector<std::string> v2{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v2.begin(), v2.end());
+    std::cout << "Unsorted vector: " << v2 << std::endl;
+
+    std::vector<std::string> v3{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v3.begin(), v3.end());
+    std::cout << "Unsorted vector: " << v3 << std::endl;
+
+    std::vector<std::string> v4{ "cat", "dog", "cat", "dog", "cat" };
+    std::sort(v4.begin(), v4.end());
+    std::cout << "Unsorted vector: " << v4 << std::endl;
+
+    std::vector<std::string> v5{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v5.begin(), v5.end());
+    std::cout << "Unsorted vector: " << v5 << std::endl;
+
+    std::vector<std::string> v6{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v6.begin(), v6.end());
+    std::cout << "Unsorted vector: " << v6 << std::endl;
+
+    std::vector<std::string> v7{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v7.begin(), v7.end());
+    std::cout << "Unsorted vector: " << v7 << std::endl;
+
+    std::vector<std::string> v8{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v8.begin(), v8.end());
+    std::cout << "Unsorted vector: " << v8 << std::endl;
+
+    std::vector<std::string> v9{ "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v9.begin(), v9.end());
+    std::cout << "Unsorted vector: " << v9 << std::endl;
+
+    std::vector<std::string> v10{ "cat", "dog", "cat", "dog", "cat", "dog", "cat", "dog" };
+    std::sort(v10.begin(), v10.end());
+    std::cout << "Unsorted vector: " << v10 << std::endl;
+
+    std::vector<std::string> v11{ "cat", "dog", "cat", "dog", "cat", "dog", "cat", "dog", "cat" };
+    std::sort(v11.begin(), v11.end());
+    std::cout << "Unsorted vector: " << v11 <<

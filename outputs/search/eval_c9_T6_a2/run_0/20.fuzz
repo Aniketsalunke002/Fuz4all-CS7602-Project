@@ -1,0 +1,9 @@
+#include <iostream>
+int main() {
+	std::string s = "Hello C++ World!";
+	std::string s2("Goodbye C++ World!");
+	s2.insert(0, "Hello ");
+	s2.insert(1, "C++");
+	std::cout << s2 << std::endl;
+	return 0;
+}

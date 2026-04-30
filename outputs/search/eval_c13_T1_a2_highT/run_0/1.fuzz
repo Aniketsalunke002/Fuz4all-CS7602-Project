@@ -1,0 +1,9 @@
+#include <iostream>
+
+#include <string>
+
+int main() {
+    std::string s1 = "Hello world";
+    auto ptr = std::begin(s1);
+    std::cout << ptr << std::endl;
+}

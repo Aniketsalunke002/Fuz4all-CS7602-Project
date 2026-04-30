@@ -1,5 +1,17 @@
 #include <iostream>
 
-#include <string>
-double max_power(double a, double b);
-#endif	 
+#include <complex>
+using complex double;
+
+int main()
+{
+	complex double val = complex<double>(1, 2);
+	complex<double>(1, 2);
+	complex<double> num(1,2);
+	num.imag(2);
+	num = num / num;
+	val = val + num;
+	std::cout << val.real() << std::endl;
+
+	return 0;
+}

@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+int main() {
+	std::string s = "Hello C++ World!";
+	std::string s2 = "Hello C++";
+	std::cout << s2 << std::endl;
+	std::string s3 = s;
+	s3.assign("Hello C++ World!");
+	s3.at(0) = 'H';
+	std::cout << s3.substr(0, 2) << s3.substr(2) << std::endl;
+	std::string s4 = s;
+	s4.assign("Hello C++ World!");
+	s4.at(0) = 'H';
+	std::cout << s4.substr(0, 2) << s4.substr(2) << std::endl;
+	return 0;
+}

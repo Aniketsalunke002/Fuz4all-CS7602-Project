@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+class C {
+public:
+    void func() {
+        cout << "C::func" << endl;
+    }
+};
+int main() {
+    C c = C();
+    c.func();
+    return 0;
+}

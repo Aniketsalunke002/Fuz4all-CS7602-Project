@@ -1,0 +1,5 @@
+{
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c5_T2_a2/run_0/9.fuzz:N:M: error: redefinition of \u2018int main()\u2019": "#include <iostream>\n\n#include <fstream>\nusing namespace std;\nint main() {\n    ifstream in(\"my",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c5_T2_a2/run_0/10.fuzz:N:M: error: empty character constant": "#include <iostream>\n\n#include <iomanip>\n#include <string>\nint main() {\n    using namespace std;\n    int x, y, z;\n    cin >> x >> y >> z;\n    cout << x <<'' << y <<'' << z << endl;\n    return 0;\n}",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c5_T2_a2/run_0/27.fuzz:N:M: error: redefinition of \u2018int main()\u2019": "#include <iostream>\n\n#include <stdlib.h>\nusing namespace std;\nint main() {\n    cout << \"Hello World\" << endl;\n    return 0;\n}"
+}

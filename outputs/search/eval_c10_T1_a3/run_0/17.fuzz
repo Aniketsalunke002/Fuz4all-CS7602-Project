@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int *p;
+    p = new int;
+    *p = 1;
+    cout << *p << endl;
+    *p = 3;
+    cout << *p << endl;
+    p++;
+    *p = 2;
+    cout << *p << endl;
+    return 0;
+}

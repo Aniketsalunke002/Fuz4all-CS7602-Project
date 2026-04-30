@@ -1,0 +1,43 @@
+#include <iostream>
+
+#include <vector>
+using namespace std;
+
+class A {
+ public:
+  A() {
+    cout << "A::A()\n";
+  }
+  virtual ~A() {
+    cout << "A::~A()\n";
+  }
+};
+
+class B : public A {
+ public:
+  B() {
+    cout << "B::B()\n";
+  }
+  virtual ~B() {
+    cout << "B::~B()\n";
+  }
+};
+
+class C : public B {
+ public:
+  C() {
+    cout << "C::C()\n";
+  }
+  virtual ~C() {
+    cout << "C::~C()\n";
+  }
+};
+
+int main() {
+  vector<C *> *v = new vector<C *>();
+  for (auto i : *v) {
+    delete i;
+  }
+  delete v;
+  return 0;
+}

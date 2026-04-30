@@ -1,12 +1,39 @@
 #include <iostream>
 
 
-void main()
+struct foo
 {
-    std::string str = "Hello";
-    std::cout << str.capacity() << '\n';
-    str.resize(5);
-    std::cout << str.capacity() << '\n';
-    str.resize(2, 'C');
-    std::cout << str.capacity() << '\n';
+	foo()
+	{
+		bool b = true;   
+		this->b = &b;
+
+		this->v1 = false;  
+	}
+
+	foo(const foo &) = delete;
+	foo& operator=(const foo &) = delete;
+
+	friend std::ostream & operator<<(std::ostream &os, const foo &f);
+
+	bool v1;
+	bool *b;
+};
+
+std::ostream & operator<<(std::ostream &os, const foo &f)
+{
+	os << f.v1? "false" : "true";
+	return os;
 }
+
+void f()
+{
+	foo foo1;
+	foo foo2;
+	foo *pf, *p;
+	pf = &foo1;
+	p = &foo1;
+
+	foo1.v1 = false;
+
+	foo2 = *pf;   

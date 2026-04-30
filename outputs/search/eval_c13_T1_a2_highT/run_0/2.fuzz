@@ -1,0 +1,9 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+int main() {
+  std::string s1 = "Hello world";
+  auto& ptr = s1;
+  std::transform(ptr.begin(), ptr.end(), ptr.begin(), [](char c) { return std::toupper(c); });
+  std::cout << ptr << std::endl;
+}

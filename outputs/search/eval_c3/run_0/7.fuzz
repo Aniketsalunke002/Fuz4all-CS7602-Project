@@ -1,9 +1,7 @@
 #include <iostream>
 
 
-int main()
-{
-     
-    std::string myString = "ABC";
-    return 0;
+int main() {
+
+    std::cout << "A very long long long long long long long long long long long long long long long long long long";
 }

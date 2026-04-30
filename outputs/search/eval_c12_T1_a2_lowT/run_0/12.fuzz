@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int i = 42;
+    cout << i << endl;
+    int j = 16;
+    cout << j << endl;
+    return 0;
+}

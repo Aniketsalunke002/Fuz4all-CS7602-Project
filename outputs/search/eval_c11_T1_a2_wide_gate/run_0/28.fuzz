@@ -1,0 +1,25 @@
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::A()\n"; }
+    B(int i) { std::cout << "B::A(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  D d;
+  return 0;
+}

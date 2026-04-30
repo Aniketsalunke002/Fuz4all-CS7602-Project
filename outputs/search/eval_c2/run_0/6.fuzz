@@ -1,10 +1,20 @@
 #include <iostream>
+class Car {
+public:
+    Car()
+    {
+        cout << "Cars are initialized" << endl;
+        speed = 0;
+    }
+    Car(double s)
+    { speed = s; }
+    double speed;
+};
 int main()
 {
-	int counter = 0;
-	while(counter <= 100) {
-		new int[1][1]{counter};
-		
-		counter = counter + 1;
-	}
-}
+    Car car(150);                   
+    car.speed = 294;             
+    double kilometersPassed = -294;  
+    cout << kilometersPassed << endl;
+    car.speed = 130;                     
+    cout << car.speed << endl;

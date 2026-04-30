@@ -1,0 +1,15 @@
+#include <iostream>
+std::stack<int> s;
+int main()
+{
+    s.pop();
+    s.pop();
+    s.push(5);
+    s.push(3);
+    s.push(9);
+    s.push(8);
+    s.push(1);
+    while(!s.empty())
+        std::cout << s.top() << " ";
+    return 0;
+}

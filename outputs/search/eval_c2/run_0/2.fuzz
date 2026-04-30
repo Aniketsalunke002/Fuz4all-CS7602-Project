@@ -1,4 +1,33 @@
 #include <iostream>
 
+#include <string>
+
+using namespace std;
+
+class A {};
+A a;
+
+ 
+ 
+ 
+ 
+ 
+
 template <typename T>
-void f(T);
+vector<T> convert(const vector<A>& args)
+{
+     
+    vector<A> tmp;
+    tmp.reserve(100);
+    for (A&& arg : args)
+    {
+        tmp.push_back(arg);
+    }
+
+    return tmp;
+}
+
+int main()
+{
+    return 0;
+}

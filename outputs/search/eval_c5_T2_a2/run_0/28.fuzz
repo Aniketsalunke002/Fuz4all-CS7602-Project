@@ -1,0 +1,24 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+int main() {
+    clock_t start, end;
+    start = clock();
+    int x = 10, y = 0;
+    x = x + y;
+    cout << x << endl;
+    end = clock();
+    cout << end - start << endl;
+    return 0;
+}
+ 
+#include <iostream>
+using namespace std;
+int main() {
+    float a = 10.0, b = 20, c = 15;
+    cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
+    return 0;
+}
+ 

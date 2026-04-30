@@ -61,7 +61,8 @@ repair:
 ## Metrics and logs
 
 - **records.jsonl**: One JSON object per program (and per repair attempt). Fields: `program_id`, `is_repair`, `repair_attempt_index`, `compile_status`, `signature`, `exit_code`, `elapsed_sec`, `program_hash`, `bytes`, `llm_calls_used`, `timestamp`.
-- **metrics.json**: End-of-run summary: `total_generated`, `total_compiled_ok`, `valid_rate`, `unique_valid_rate`, `duplicate_rate`, `total_failures`, `unique_failure_count`, `repair_attempted_count`, `repair_success_count`, `repair_success_rate`, `cache_hit_count`, `cache_miss_count`, `avg_time_per_program`, `llm_overhead`.
+- **metrics.json**: End-of-run summary: `total_generated`, `total_compiled_ok`, `valid_rate`, `unique_valid_rate`, `duplicate_rate`, `total_failures`, `unique_failure_count`, `repair_attempted_count`, `repair_success_count`, `repair_success_rate`, `cache_hit_count`, `cache_miss_count`, `avg_time_per_program`.
+- **Note on `unique_failure_count`**: counts distinct failure signatures across *all* generation and repair attempts in the run, so it can exceed `total_failures` (which counts programs whose final disposition is "failed"). For example, a program that triggers two distinct compile errors during its repair attempts but is ultimately recovered contributes 0 to `total_failures` and up to 2 to `unique_failure_count`.
 
 ## Evaluate a candidate config
 

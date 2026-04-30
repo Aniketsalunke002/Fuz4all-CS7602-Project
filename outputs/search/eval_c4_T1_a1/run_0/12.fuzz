@@ -1,0 +1,41 @@
+#include <iostream>
+#include <stack>
+
+struct Node
+{
+    int value;
+    Node *next;
+};
+
+Node *CreateLinkedList(int value)
+{
+    Node *root = new Node;
+    root->value = value;
+    root->next = nullptr;
+    return root;
+}
+
+void PrintLinkedList(Node *root)
+{
+    int counter = 0;
+    while (root!= nullptr)
+    {
+        std::cout << root->value << " -> ";
+        root = root->next;
+        counter++;
+    }
+    std::cout << std::endl;
+}
+
+void PushLinkedList(Node *root, int value)
+{
+    Node *newNode = CreateLinkedList(value);
+    newNode->next = root;
+    root = newNode;
+}
+
+void PopLinkedList(Node *&root, int &value)
+{
+    if (root == nullptr)
+    {
+        value = -1;

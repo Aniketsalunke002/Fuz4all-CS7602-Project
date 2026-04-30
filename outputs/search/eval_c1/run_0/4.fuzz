@@ -1,1 +1,24 @@
 #include <iostream>
+
+using namespace std;
+
+class Cat
+{
+  private:
+    int *m_memory;
+    int m_size;
+    int m_count;
+  public:
+    Cat(int size = 10) { m_size = size; m_memory = new int[size]; }
+    ~Cat()
+    {
+      for (int i=0; i<m_count; i++)
+        cout<<"Cat["<<i<<"]="<<m_memory[i]<<endl;
+      delete [] m_memory;
+      m_memory = 0;
+    }
+    double say_name() { return (double)m_count/m_size; }
+};
+
+int main() {
+}

@@ -1,23 +1,26 @@
 #include <iostream>
 
+#include <vector>
+  
+template<typename T>
+void printVector( const std::vector<T>& vec){
+	std::cout << "{";
+	if (! vec.empty() )
+		for ( unsigned i=0; i < vec.size()-1; i++ )
+			std::cout << vec[i] << ", ";
+	std::cout << vec[vec.size() - 1] << "}" << std::endl;
+}
+  
+void check(){
+	std::vector<std::string> vec = { "a", "b", "c" };
+	printVector( vec );
 
-namespace {
-    using namespace std;
-     
-    void printString(const string& s) {
-        cout << s << endl;
-    }
-     
-    using function = std::function<void(void)>;
-     
+	std::array<char, 5> arr = {'a', 'b', 'c', 'd', 'e'};
+	std::cout << "Array: " << std::endl;
+	printVector( arr );
 }
 
-int main() {
-     
-     
-    function printVoid = [](void) { cout << "In the function\n"; };
-    cout << "Hello world!" << endl;
-    printString("Clang - " + "GCC" + " - " + "Microsoft");
-    printVoid();
-    return 0;
+int main(){
+	check();
+ 	return 0;    
 }

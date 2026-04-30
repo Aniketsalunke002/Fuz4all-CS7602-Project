@@ -1,0 +1,10 @@
+#include <iostream>
+namespace {
+    int i = 1;
+    i = i + 2;
+    return;
+}
+int main() {
+    foo();
+    return 0;
+}

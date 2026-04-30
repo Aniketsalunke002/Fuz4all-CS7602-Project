@@ -1,0 +1,28 @@
+#include <iostream>
+
+
+#include <vector>
+#include <list>
+#include <map>
+#include <string>
+#include <memory>
+
+#define X "a"
+
+int main() {
+     
+    std::cout << X << '\n';
+
+    const int SIZE = 10;
+    std::vector<int> numbers(SIZE);
+
+    int i = 0;
+    for (auto& num : numbers)
+        num = i++;
+
+    i = 0;
+    for (auto& num : numbers)
+        num = ++i;
+
+    return 0;
+}

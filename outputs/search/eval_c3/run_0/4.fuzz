@@ -1,45 +1,9 @@
 #include <iostream>
 
 
-struct Node;
-class ArrayList;
-class Collection;
-
-void printNodeList(Node *head);
-void printArrayList(ArrayList *arr);
-
-class Node
+ 
+int main()
 {
- public:
-     
-    Node *next;
-
-     
-    int value;
-
-     
-    Node(int value_in);
-
-     
-    ~Node();
-};
-
-class ArrayList
-{
- public:
-     
-    Node *head;
-
-     
-    int head_capacity;
-
-     
-    void addNode(Node *node, int data);
-
-     
-    int numItems() const;
-
-     
-    int dataAtPosition(int index) const;
-
-    /* Inserts a node
+    std::cout<< "1 + 2 = " << 1 + 2 << std::endl;
+    std::cout<< "1 * 5 = " << 1 * 5 << std::endl;
+}

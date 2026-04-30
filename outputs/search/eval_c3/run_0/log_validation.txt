@@ -1,71 +1,124 @@
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz:5:7: error: size of array ‘a’ is not an integral constant-expression
-    5 | int a[n] = {53, 23, 75, 10,};
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz:11:33: error: invalid operands of types ‘const char [8]’ and ‘const char [2]’ to binary ‘operator+’
+   11 |     string fullname = "Andreas" + " " + "Davids";
+      |                       ~~~~~~~~~ ^ ~~~
+      |                       |           |
+      |                       |           const char [2]
+      |                       const char [8]
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz:14:20: error: no matching function for call to ‘isspace(std::string&)’
+   14 |     cout << isspace(name) << isspace(fullname) << endl;
+      |             ~~~~~~~^~~~~~
+In file included from /usr/include/c++/11/bits/basic_ios.h:37,
+                 from /usr/include/c++/11/ios:44,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz:1:
+/usr/include/c++/11/bits/locale_facets.h:2596:5: note: candidate: ‘template<class _CharT> bool std::isspace(_CharT, const std::locale&)’
+ 2596 |     isspace(_CharT __c, const locale& __loc)
+      |     ^~~~~~~
+/usr/include/c++/11/bits/locale_facets.h:2596:5: note:   template argument deduction/substitution failed:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/0.fuzz:14:20: note:   candidate expects 2 arguments, 1 provided
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz:5:12: error: ‘STACKLENGTH’ was not declared in this scope
+    5 |   int data[STACKLENGTH];
+      |            ^~~~~~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz: In destructor ‘Stack::~Stack()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz:9:23: error: ‘data’ was not declared in this scope
+    9 |   ~Stack() {delete [] data;}
+      |                       ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz:9:23: note: suggested alternatives:
+In file included from /usr/include/c++/11/string:54,
+                 from /usr/include/c++/11/bits/locale_classes.h:40,
+                 from /usr/include/c++/11/bits/ios_base.h:41,
+                 from /usr/include/c++/11/ios:42,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/2.fuzz:1:
+/usr/include/c++/11/bits/range_access.h:319:5: note:   ‘std::data’
+  319 |     data(initializer_list<_Tp> __il) noexcept
+      |     ^~~~
+In file included from /usr/include/c++/11/string_view:48,
+                 from /usr/include/c++/11/bits/basic_string.h:48,
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:44:3: error: no matching function for call to ‘A::A()’
+   44 | A b2;
+      |   ^~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:11:4: note: candidate: ‘A::A(int)’
+   11 |    A(int value) :x_(value){}
+      |    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:11:4: note:   candidate expects 1 argument, 0 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:7:7: note: candidate: ‘constexpr A::A(const A&)’
+    7 | class A{
       |       ^
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/0.fuzz:5:28: error: too many initializers for ‘int [1]’
-    5 | int a[n] = {53, 23, 75, 10,};
-      |                            ^
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/1.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/1.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/1.fuzz:6:2: error: #endif without #if
-    6 | #endif
-      |  ^~~~~
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/2.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/2.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/3.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/3.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:45:5: error: unterminated comment
-   45 |     /* Inserts a node
-      |     ^
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:43:41: error: expected ‘}’ at end of input
-   43 |     int dataAtPosition(int index) const;
-      |                                         ^
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:28:1: note: to match this ‘{’
-   28 | {
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:7:7: note:   candidate expects 1 argument, 0 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:7:7: note: candidate: ‘constexpr A::A(A&&)’
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:7:7: note:   candidate expects 1 argument, 0 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:45:1: error: ‘C’ does not name a type
+   45 | C::C(int x) { c_ = x;}
       | ^
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/4.fuzz:43:41: error: expected unqualified-id at end of input
-   43 |     int dataAtPosition(int index) const;
-      |                                         ^
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:11:27: error: ‘function’ in namespace ‘std’ does not name a template type
-   11 |     using function = std::function<void(void)>;
-      |                           ^~~~~~~~
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:2:1: note: ‘std::function’ is defined in header ‘<functional>’; did you forget to ‘#include <functional>’?
-    1 | #include <iostream>
-  +++ |+#include <functional>
-    2 | 
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz: In function ‘int main()’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:18:5: error: ‘function’ was not declared in this scope; did you mean ‘union’?
-   18 |     function printVoid = [](void) { cout << "In the function\n"; };
-      |     ^~~~~~~~
-      |     union
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:20:28: error: invalid operands of types ‘const char [9]’ and ‘const char [4]’ to binary ‘operator+’
-   20 |     printString("Clang - " + "GCC" + " - " + "Microsoft");
-      |                 ~~~~~~~~~~ ^ ~~~~~
-      |                 |            |
-      |                 |            const char [4]
-      |                 const char [9]
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/5.fuzz:21:5: error: ‘printVoid’ was not declared in this scope
-   21 |     printVoid();
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz: In function ‘int main()’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/6.fuzz:11:35: error: ‘setprecision’ was not declared in this scope
-   11 |         cout << "8.677" << "C" << setprecision(3) << fixed << endl;
-      |                                   ^~~~~~~~~~~~
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/7.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/7.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/8.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/8.fuzz:6:17: error: ‘Cxx17’ is not a namespace-name
-    6 | using namespace Cxx17;
-      |                 ^~~~~
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz:4:2: error: #else without #if
-    4 | #else
-      |  ^~~~
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz:6:2: error: #endif without #if
-    6 | #endif
-      |  ^~~~~
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c3/run_0/9.fuzz:9:10: fatal error: std_algorithms.h: No such file or directory
-    9 | #include "std_algorithms.h"
-      |          ^~~~~~~~~~~~~~~~~~
-compilation terminated.
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/3.fuzz:46:1: error: ‘C’ does not name a type
+   46 | C::C(int x) : x_(x) {c_ = x;}
+      | ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz: In function ‘void check()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz:18:14: error: ‘array’ is not a member of ‘std’
+   18 |         std::array<char, 5> arr = {'a', 'b', 'c', 'd', 'e'};
+      |              ^~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz:4:1: note: ‘std::array’ is defined in header ‘<array>’; did you forget to ‘#include <array>’?
+    3 | #include <vector>
+  +++ |+#include <array>
+    4 | 
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz:18:20: error: expected primary-expression before ‘char’
+   18 |         std::array<char, 5> arr = {'a', 'b', 'c', 'd', 'e'};
+      |                    ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/5.fuzz:20:22: error: ‘arr’ was not declared in this scope
+   20 |         printVector( arr );
+      |                      ^~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:11:4: error: no declaration matches ‘X* X::getPtr(X*, int)’
+   11 | X *X::getPtr(X *x, int n) {
+      |    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:11:4: note: no functions named ‘X* X::getPtr(X*, int)’
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:5:8: note: ‘struct X’ defined here
+    5 | struct X {
+      |        ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz: In function ‘X& getRef(X)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:15:6: error: ‘getPtr’ is not a member of ‘X’
+   15 |   X::getPtr(&x, -1);
+      |      ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:16:3: error: ‘assert’ was not declared in this scope
+   16 |   assert(x.x == 0);
+      |   ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:5:1: note: ‘assert’ is defined in header ‘<cassert>’; did you forget to ‘#include <cassert>’?
+    4 | #include        <memory>
+  +++ |+#include <cassert>
+    5 | struct X {
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/6.fuzz:17:10: warning: reference to local variable ‘x’ returned [-Wreturn-local-addr]
+   17 |   return x;
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz:25:27: error: expected ‘}’ at end of input
+   25 |                 return os;
+      |                           ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz:11:1: note: to match this ‘{’
+   11 | {
+      | ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz: In function ‘std::ostream& operator<<(std::ostream&, const Person&)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz:25:27: error: expected ‘}’ at end of input
+   25 |                 return os;
+      |                           ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz:23:67: note: to match this ‘{’
+   23 |         friend ostream& operator<< (ostream& os, const Person& p) {
+      |                                                                   ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz: At global scope:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/8.fuzz:25:27: error: expected unqualified-id at end of input
+   25 |                 return os;
+      |                           ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c3/run_0/9.fuzz is safe

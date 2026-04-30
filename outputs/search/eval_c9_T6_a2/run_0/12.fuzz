@@ -1,0 +1,10 @@
+#include <iostream>
+#include <string>
+std::string str = "Hello C++ World!";
+int main()
+{
+	std::cout << str[0] << std::endl;
+	str[0] = 'H';
+	std::cout << str << std::endl;
+	return 0;
+}

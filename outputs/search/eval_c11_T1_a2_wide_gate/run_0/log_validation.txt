@@ -1,0 +1,148 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/0.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/2.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/2.fuzz: In function ‘void c()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/2.fuzz:20:7: error: no match for ‘operator=’ (operand types are ‘B’ and ‘void()’)
+   20 |   b = c;
+      |       ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/2.fuzz:7:7: note: candidate: ‘constexpr B& B::operator=(const B&)’
+    7 | class B : public A {
+      |       ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/2.fuzz:7:7: note:   no known conversion for argument 1 from ‘void()’ to ‘const B&’
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz: In constructor ‘B::B(A&)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:13:13: error: no matching function for call to ‘A::A()’
+   13 |     B(A& a) { m = a.m; std::cout << "B::B(A&)\n"; }
+      |             ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:5:5: note: candidate: ‘A::A(A&)’
+    5 |     A(A& a) { m = a.m; std::cout << "A::A(A&)\n"; }
+      |     ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:5:5: note:   candidate expects 1 argument, 0 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:4:5: note: candidate: ‘A::A(int)’
+    4 |     A(int x) { m = x; std::cout << "A::A(int)\n"; }
+      |     ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:4:5: note:   candidate expects 1 argument, 0 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz: In member function ‘A& B::operator=(A)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:15:75: error: invalid initialization of reference of type ‘A&’ from expression of type ‘B’
+   15 |     A& operator=(A a) { m = a.m; std::cout << "B::operator=(A)\n"; return *this; }
+      |                                                                           ^~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/3.fuzz:21:13: error: no match for ‘operator<<’ (operand types are ‘std::ostream’ {aka ‘std::basic_ostream<char>’} and ‘A’)
+   21 |   std::cout << b.m << "\n";
+      |   ~~~~~~~~~ ^~ ~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:16:6: error: no declaration matches ‘void A::mutate()’
+   16 | void A::mutate() {
+      |      ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:16:6: note: no functions named ‘void A::mutate()’
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:2:7: note: ‘class A’ defined here
+    2 | class A {
+      |       ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:19:6: error: no declaration matches ‘void B::mutate()’
+   19 | void B::mutate() {
+      |      ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:19:6: note: no functions named ‘void B::mutate()’
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:7:7: note: ‘class B’ defined here
+    7 | class B : public A {
+      |       ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:22:6: error: no declaration matches ‘void C::mutate()’
+   22 | void C::mutate() {
+      |      ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:22:6: note: no functions named ‘void C::mutate()’
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/5.fuzz:12:7: note: ‘class C’ defined here
+   12 | class C : public B {
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/6.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/8.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/8.fuzz:21:9: error: cannot convert ‘B’ to ‘B*’ in assignment
+   21 |   c.a = b;
+      |         ^
+      |         |
+      |         B
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/9.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/10.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/10.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/11.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/11.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/12.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/12.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/13.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/13.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/13.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/13.fuzz:20:8: error: ‘class B’ has no member named ‘a’
+   20 |   c.a->a = new A;
+      |        ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/14.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/14.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/14.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/14.fuzz:20:8: error: ‘class B’ has no member named ‘a’
+   20 |   c.a->a = new A;
+      |        ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/14.fuzz:21:8: error: ‘class B’ has no member named ‘a’
+   21 |   c.a->a->a = c.a;
+      |        ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/14.fuzz:22:8: error: ‘class B’ has no member named ‘a’
+   22 |   c.a->a->a->a = c.a;
+      |        ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/15.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/15.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/15.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/15.fuzz:19:9: error: cannot convert ‘B*’ to ‘A*’ in assignment
+   19 |   c.a = new B;
+      |         ^~~~~
+      |         |
+      |         B*
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/16.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/16.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/17.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/17.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/18.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/18.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:27:17: error: no matching function for call to ‘A::A(const char [1])’
+   27 |   c = C(A(B(A("")));
+      |                 ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:6:5: note: candidate: ‘A::A(A&&)’
+    6 |     A(A &&a) { std::cout << "A::A(A &&)\n"; }
+      |     ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:6:11: note:   no known conversion for argument 1 from ‘const char [1]’ to ‘A&&’
+    6 |     A(A &&a) { std::cout << "A::A(A &&)\n"; }
+      |       ~~~~^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:5:5: note: candidate: ‘A::A(const A&)’
+    5 |     A(A const& a) { std::cout << "A::A(A const&)\n"; }
+      |     ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:5:16: note:   no known conversion for argument 1 from ‘const char [1]’ to ‘const A&’
+    5 |     A(A const& a) { std::cout << "A::A(A const&)\n"; }
+      |       ~~~~~~~~~^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:4:5: note: candidate: ‘A::A()’
+    4 |     A() { std::cout << "A::A()\n"; }
+      |     ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/19.fuzz:4:5: note:   candidate expects 0 arguments, 1 provided
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/20.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/20.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/21.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/21.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/22.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/22.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/22.fuzz:6:5: error: ‘B’ does not name a type
+    6 |     B *b;
+      |     ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/23.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/23.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/24.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/24.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/25.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/25.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/26.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/26.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/27.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/27.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/28.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/28.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/29.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c11_T1_a2_wide_gate/run_0/29.fuzz is safe

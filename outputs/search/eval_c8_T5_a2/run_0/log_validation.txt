@@ -1,0 +1,129 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz:20:41: error: no matching function for call to ‘std::vector<int>::vector(<brace-enclosed initializer list>, <brace-enclosed initializer list>)’
+   20 |     std::vector<int> vec6({1, 2}, {3, 4});
+      |                                         ^
+In file included from /usr/include/c++/11/vector:67,
+                 from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz:3:
+/usr/include/c++/11/bits/stl_vector.h:653:9: note: candidate: ‘template<class _InputIterator, class> std::vector<_Tp, _Alloc>::vector(_InputIterator, _InputIterator, const allocator_type&) [with _InputIterator = _InputIterator; <template-parameter-2-2> = <template-parameter-1-2>; _Tp = int; _Alloc = std::allocator<int>]’
+  653 |         vector(_InputIterator __first, _InputIterator __last,
+      |         ^~~~~~
+/usr/include/c++/11/bits/stl_vector.h:653:9: note:   template argument deduction/substitution failed:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz:20:41: note:   couldn’t deduce template parameter ‘_InputIterator’
+   20 |     std::vector<int> vec6({1, 2}, {3, 4});
+      |                                         ^
+In file included from /usr/include/c++/11/vector:67,
+                 from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/0.fuzz:3:
+/usr/include/c++/11/bits/stl_vector.h:625:7: note: candidate: ‘std::vector<_Tp, _Alloc>::vector(std::initializer_list<_Tp>, const allocator_type&) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::allocator_type = std::allocator<int>]’
+  625 |       vector(initializer_list<value_type> __l,
+      |       ^~~~~~
+/usr/include/c++/11/bits/stl_vector.h:626:36: note:   no known conversion for argument 2 from ‘<brace-enclosed initializer list>’ to ‘const allocator_type&’ {aka ‘const std::allocator<int>&’}
+  626 |              const allocator_type& __a = allocator_type())
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:25:67: error: no matching function for call to ‘Manager::Manager(const char [7], int, <brace-enclosed initializer list>)’
+   25 |     Manager manager("<NAME>", 30, {{"<NAME>", 18}, {"<NAME>", 30}});
+      |                                                                   ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:20:5: note: candidate: ‘Manager::Manager(std::string, int, const std::map<std::__cxx11::basic_string<char>, Employee>&)’
+   20 |     Manager(string name, int age, const map<string, Employee>& employees) : Employee(name, age), employees(employees) {}
+      |     ^~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:20:64: note:   no known conversion for argument 3 from ‘<brace-enclosed initializer list>’ to ‘const std::map<std::__cxx11::basic_string<char>, Employee>&’
+   20 |     Manager(string name, int age, const map<string, Employee>& employees) : Employee(name, age), employees(employees) {}
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:16:7: note: candidate: ‘Manager::Manager(const Manager&)’
+   16 | class Manager : public Employee {
+      |       ^~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:16:7: note:   candidate expects 1 argument, 3 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:16:7: note: candidate: ‘Manager::Manager(Manager&&)’
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:16:7: note:   candidate expects 1 argument, 3 provided
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/1.fuzz:26:39: error: passing ‘const std::map<std::__cxx11::basic_string<char>, Employee>’ as ‘this’ argument discards qualifiers [-fpermissive]
+   26 |     cout << manager.employees["<NAME>"] << endl;
+      |                                       ^
+In file included from /usr/include/c++/11/map:61,
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz: In function ‘void printName(const Person&)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz:19:27: error: passing ‘const Person’ as ‘this’ argument discards qualifiers [-fpermissive]
+   19 |     std::cout << p.getName() << std::endl;
+      |                  ~~~~~~~~~^~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz:13:24: note:   in call to ‘const string& Person::getName()’
+   13 |     const std::string &getName() { return name; }
+      |                        ^~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz:25:9: error: no match for ‘operator=’ (operand types are ‘Person’ and ‘const char [5]’)
+   25 |     p = "Jane";
+      |         ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz:9:13: note: candidate: ‘Person& Person::operator=(const Person&)’
+    9 |     Person &operator=(const Person &p) {
+      |             ^~~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/3.fuzz:9:37: note:   no known conversion for argument 1 from ‘const char [5]’ to ‘const Person&’
+    9 |     Person &operator=(const Person &p) {
+      |                       ~~~~~~~~~~~~~~^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/5.fuzz:9:5: error: redefinition of ‘int main()’
+    9 | int main() {
+      |     ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/5.fuzz:3:5: note: ‘int main()’ previously defined here
+    3 | int main() {
+      |     ^~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/5_r1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/5_r1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/6.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/8.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/9.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/10.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/10.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/11.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/11.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/12.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/12.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/13.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/13.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/14.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/14.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/15.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/15.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/16.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/16.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/17.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/17.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/18.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/18.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/19.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/19.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/20.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/20.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/21.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/21.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/22.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/22.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/23.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/23.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/24.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/24.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/24.fuzz:23:1: error: unterminated comment
+   23 | /* Please create a program
+      | ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/24.fuzz:14:5: error: redefinition of ‘int main()’
+   14 | int main() {
+      |     ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/24.fuzz:3:5: note: ‘int main()’ previously defined here
+    3 | int main() {
+      |     ^~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/25.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/25.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/26.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/26.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/27.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/27.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/28.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/28.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/29.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c8_T5_a2/run_0/29.fuzz is safe

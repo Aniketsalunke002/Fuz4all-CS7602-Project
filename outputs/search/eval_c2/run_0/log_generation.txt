@@ -3,163 +3,182 @@
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
+#include <memory>
 
-int main(int argc, char const *argv[])
+int main() {
+    std::cout << "Hello world" << std::endl;
+    auto ptr1 = std::make_shared<int>(3);
+    auto ptr2 = std::make_unique<int>(10);
+    std::cout << *ptr1 << ptr2.use_count() << ptr1.use_count() << std::endl;
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#ifdef NDEBUG
+#    define NDEBUG  
+#endif
+
+#if __cplusplus < 201103L || __clang_major__ < 6
+#    define NEVER_INLINE __attribute__((unused)) inline
+#    define ALWAYS_INLINE  __attribute__((always_inline)) inline
+#else
+#    define NEVER_INLINE
+#    define IS_ALWAYS_INLINE(x) __has_feature(x) &&!__has_feature(cxx_inline)
+#    define ALWAYS_INLINE  __attribute__((always_inline)) inline
+#endif
+
+#if!defined(NDEBUG)
+#    define DEBUG 1
+#else
+#    define DEBUG 0
+#endif
+
+#ifdef _MSC_VER
+#   define EXPORT __declspec(dllexport)
+#else
+#   define EXPORT __attribute__((visibility("default")))
+#endif
+
+char _stringbuffer[80] =
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+
+using namespace std;
+
+class A {};
+A a;
+
+ 
+ 
+ 
+ 
+ 
+
+template <typename T>
+vector<T> convert(const vector<A>& args)
 {
-    #pragma GCC optimize ("O0")
-
-    int foo = 5;  
-    float pi = 3.14f;  
-    double d = 3.14;  
-
-    std::cout << foo << std::endl;
-
      
-    foo++;
+    vector<A> tmp;
+    tmp.reserve(100);
+    for (A&& arg : args)
+    {
+        tmp.push_back(arg);
+    }
 
-    std::cout << foo << std::endl;
-
-    double d2 = (float)5;  
+    return tmp;
 }
 
+int main()
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <vector>
+using namespace std;
+
+int main(){
+    return 0;
+}
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
 using namespace std;
-int main() {
-  int a;
-  cout << "Please enter a number between 0-20: ";
-  cin >> a;
-}
 
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-template <typename T>
-void f(T);
-
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
+#define PI 3.141592654
+#define R 1000
 
 int main()
 {
-	int counter = 0;
-	while(counter <= 100) {
-		new int[1][1]{counter};
-		std::cout << counter;
-		counter++;
-
-	}
+    cout << "Hello World!" << endl;
+    return 0;
 }
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
- 
-class B {
-public:
-  int b;
-  B(B &other) : b(other.b + 1) {}
-  B() : b(1) {}
-  ~B() {}
-  int* f() {
-    std::cout << "B " << b << '\n';
-    return &b;
-  }
-};
-void test() {
-  B b;
-  new ::B(b);
-  ::B b2 = B(b);
-  B *b3 = b2.f();
-}
- 
-int main() {
-}
-
-
 [VERBOSE] ========== sample =========
 [VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
 #include <iostream>
+using namespace std;
+#define PI 3.141592654
+#define R 1000
 int main()
 {
-	int counter = 0;
-	while(counter <= 100) {
-		new int[1][1]{counter};
-		std::cout << counter;
-		counter++;
-	}
+    cout << "Hello World!" << endl;
+    return 0;
 }
-/* Please create a very short program which uses new C++ features in a complex way */
+/* Please create a mutated program that modifies the previous generation */
 #include <iostream>
 
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
+using namespace std;
+#define PI 3.141592654
+#define R 1000
 int main()
 {
-	int counter = 0;
-	while(counter <= 100){
-		new std::string[1][1](counter);
-#warning std::string does not store char
-		std::cout << counter;
-		counter++;
-	}
+    cout << "Hello World!" << endl;
+    cout << "Now we are modifying, so now we will read R" << endl;
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class Car {
+public:
+    Car()
+    {
+        cout << "Cars are initialized" << endl;
+        speed = 0;
+    }
+    Car(double s)
+    { speed = s; }
+    double speed;
+};
+int main()
+{
+    Car car(150);                   
+    car.speed = 294;             
+    double kilometersPassed = -294;  
+    cout << kilometersPassed << endl;
+    car.speed = 130;                     
+    cout << car.speed << endl;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+#define pi 3.141592654
+#define R 1000
+int main()
+{
+    int newpi = 2 * PI;
+     
+    cout << "Pi * 2: " << newpi << endl;
+    return 0;
 }
 
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
+using namespace std;
 int main()
 {
-	int counter = 0;
-	while(counter <= 100) {
-		new int[1][1]{counter};
-		
-		counter = counter + 1;
-	}
+    cout << "Hello World!";
 }
 
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
+using namespace std;
 int main()
 {
-	int counter = 1;
-	while(counter <= 100) {
-		new int[1][1]{counter};
-		std::cout << counter;
-		counter++;
-	}
+    return 0;
 }
 
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-int main()
-{
-	int counter = 0;
-	while(counter <= 100) {
-		new int[1][1]{++counter};
-		std::cout << counter;
-		counter++;
-	}
-}
-
-
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-int main()
-{
-	int counter = 0;
-	while(1) {
-		new int[1][1]{counter};
-		std::cout << counter;
-		counter++;
-	}
-}
 [VERBOSE] ========== sample =========

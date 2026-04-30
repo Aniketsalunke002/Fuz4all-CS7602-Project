@@ -1,0 +1,66 @@
+#include <iostream>
+
+
+class Person {
+public:
+	Person() {}
+};
+
+#pragma once
+
+class Car {
+public:
+	Car() {}
+};
+
+class MyClass {
+public:
+	MyClass() {}
+};
+
+class MyClass2 {
+public:
+	MyClass2() {}
+};
+
+class MyClass3 {
+public:
+	MyClass3() {}
+};
+
+class MyClass4 {
+public:
+	MyClass4() {}
+};
+
+class MyClass5 {
+public:
+	MyClass5() {}
+};
+
+class MyClass6 {
+public:
+	MyClass6() {}
+};
+
+class MyClass7 {
+public:
+	MyClass7() {}
+};
+
+class MyClass8 {
+public:
+	MyClass8() {}
+};
+
+class MyClass9 {
+public:
+	MyClass9() {}
+};
+
+class MyClass10 {
+public:
+	MyClass10() {}
+};
+
+class My

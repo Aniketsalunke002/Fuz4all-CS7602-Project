@@ -1,0 +1,11 @@
+#include <iostream>
+
+#include <iomanip>
+#include <string>
+int main() {
+    using namespace std;
+    int x, y, z;
+    cin >> x >> y >> z;
+    cout << x <<'' << y <<'' << z << endl;
+    return 0;
+}

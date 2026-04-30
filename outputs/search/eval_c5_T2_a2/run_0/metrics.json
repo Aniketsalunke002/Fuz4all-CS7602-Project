@@ -1,0 +1,16 @@
+{
+  "total_generated": 30,
+  "total_compiled_ok": 27,
+  "valid_rate": 0.9,
+  "unique_valid_rate": 0.6666666666666666,
+  "duplicate_rate": 0.23333333333333328,
+  "total_failures": 4,
+  "unique_failure_count": 8,
+  "repair_attempted_count": 4,
+  "repair_success_count": 1,
+  "repair_success_rate": 0.25,
+  "cache_hit_count": 0,
+  "cache_miss_count": 4,
+  "avg_time_per_program": 0.3626,
+  "llm_overhead": 0.7407407407407407
+}

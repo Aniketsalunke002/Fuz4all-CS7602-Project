@@ -1,0 +1,12 @@
+#include <iostream>
+namespace {
+    void bar() {
+        int i = 1;
+        ++i;
+        return;
+    }
+}
+int main() {
+    bar();
+    return 0;
+}

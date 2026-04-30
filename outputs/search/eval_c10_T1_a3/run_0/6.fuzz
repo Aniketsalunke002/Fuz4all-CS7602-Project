@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+class C {
+public:
+    void func() {}
+};
+int main() {
+    C c = C();
+    c.func();
+    return 0;
+}

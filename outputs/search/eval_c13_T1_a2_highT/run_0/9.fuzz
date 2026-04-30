@@ -1,0 +1,9 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+int main() {
+  vector<string> strs;
+  strs.push_back("Hello world");
+  cout << strs[0] << endl;
+}

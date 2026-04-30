@@ -1,49 +1,72 @@
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz: In function ‘int main(int, char**)’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:7:14: error: no match for ‘operator>>’ (operand types are ‘std::istream’ {aka ‘std::basic_istream<char>’} and ‘const char*’)
-    7 |     std::cin >> input >> n;
-      |     ~~~~~~~~ ^~ ~~~~~
-      |          |      |
-      |          |      const char*
-      |          std::istream {aka std::basic_istream<char>}
-In file included from /usr/include/c++/11/iostream:40,
-                 from /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:1:
-/usr/include/c++/11/istream:168:7: note: candidate: ‘std::basic_istream<_CharT, _Traits>::__istream_type& std::basic_istream<_CharT, _Traits>::operator>>(bool&) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_istream<_CharT, _Traits>::__istream_type = std::basic_istream<char>]’ (near match)
-  168 |       operator>>(bool& __n)
-      |       ^~~~~~~~
-/usr/include/c++/11/istream:168:7: note:   conversion of argument 1 would be ill-formed:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:7:17: error: cannot bind non-const lvalue reference of type ‘bool&’ to a value of type ‘const char*’
-    7 |     std::cin >> input >> n;
-      |                 ^~~~~
-In file included from /usr/include/c++/11/iostream:40,
-                 from /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/0.fuzz:1:
-/usr/include/c++/11/istream:172:7: note: candidate: ‘std::basic_istream<_CharT, _Traits>& std::basic_istream<_CharT, _Traits>::operator>>(short int&) [with _CharT = char; _Traits = std::char_traits<char>]’ (near match)
-  172 |       operator>>(short& __n);
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/1.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/1.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/2.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/2.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/3.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/3.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/3.fuzz:4:10: fatal error: String.h: No such file or directory
-    4 | #include "String.h"
-      |          ^~~~~~~~~~
-compilation terminated.
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/4.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/4.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/5.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/5.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz: In function ‘int main(int, char**)’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/6.fuzz:5:20: error: ‘String’ does not name a type
-    5 |     auto res = new String{"Hello World"};
-      |                    ^~~~~~
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/7.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/7.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz:4:1: error: ‘::main’ must return ‘int’
-    4 | void main()
-      | ^~~~
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz:5:2: error: #endif without #if
-    5 | #endif
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz:6:19: error: ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    6 |     int a= 2 + 3; cout << "a=" << a;
+      |                   ^~~~
+      |                   std::cout
+In file included from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz:1:
+/usr/include/c++/11/iostream:61:18: note: ‘std::cout’ declared here
+   61 |   extern ostream cout;          /// Linked to standard output
+      |                  ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz:7:15: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+    7 |     char *p = "hello";
+      |               ^~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz:9:22: error: ‘strlen’ was not declared in this scope
+    9 |         << ") = " << strlen(p) << endl;
+      |                      ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz:2:1: note: ‘strlen’ is defined in header ‘<cstring>’; did you forget to ‘#include <cstring>’?
+    1 | #include <iostream>
+  +++ |+#include <cstring>
+    2 | 
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz:9:35: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/3.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/5.fuzz:34:2: error: #endif without #if
+   34 | #endif
       |  ^~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/6.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz: In function ‘void f()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz:39:17: error: use of deleted function ‘foo& foo::operator=(const foo&)’
+   39 |         foo2 = *pf;
+      |                 ^~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz:15:14: note: declared here
+   15 |         foo& operator=(const foo &) = delete;
+      |              ^~~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz:39:20: error: expected ‘}’ at end of input
+   39 |         foo2 = *pf;
+      |                    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/8.fuzz:30:1: note: to match this ‘{’
+   30 | {
+      | ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:4:7: error: expected nested-name-specifier before ‘complex’
+    4 | using complex double;
+      |       ^~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:8:9: error: ‘complex’ was not declared in this scope; did you mean ‘std::complex’?
+    8 |         complex double val = complex<double>(1, 2);
+      |         ^~~~~~~
+      |         std::complex
+In file included from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:3:
+/usr/include/c++/11/complex:67:32: note: ‘std::complex’ declared here
+   67 |   template<typename _Tp> class complex;
+      |                                ^~~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:9:17: error: expected primary-expression before ‘double’
+    9 |         complex<double>(1, 2);
+      |                 ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:10:17: error: expected primary-expression before ‘double’
+   10 |         complex<double> num(1,2);
+      |                 ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:11:9: error: ‘num’ was not declared in this scope; did you mean ‘enum’?
+   11 |         num.imag(2);

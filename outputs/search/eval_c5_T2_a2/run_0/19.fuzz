@@ -1,0 +1,13 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+int main() {
+    float f = 10.10;
+    double d = 10.10;
+    string s = "a";
+    f = 3.14;
+    d = 3.14;
+    s = "a";
+    return 0;
+}

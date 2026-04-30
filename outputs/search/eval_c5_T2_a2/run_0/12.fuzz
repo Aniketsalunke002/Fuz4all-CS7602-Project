@@ -1,0 +1,10 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+int main() {
+    int i = 10;
+    string s = "Hello";
+    cout << i << endl << s << endl;
+    return 0;
+}

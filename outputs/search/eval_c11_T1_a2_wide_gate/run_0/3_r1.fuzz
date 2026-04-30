@@ -1,0 +1,28 @@
+#include <iostream>
+
+class A {
+  public:
+    A(int x) { m = x; std::cout << "A::A(int)\n"; }
+    A(A& a) { m = a.m; std::cout << "A::A(A&)\n"; }
+    ~A() { std::cout << "A::~A()\n"; }
+    int& operator*() { return m; }
+    int* operator->() { return &m; }
+    int m;
+};
+class B {
+  public:
+    B(A& a) { m = a.m; std::cout << "B::B(A&)\n"; }
+    ~B() { std::cout << "B::~B()\n"; }
+    A& operator=(A a) { m = a.m; std::cout << "B::operator=(A)\n"; return *this; }
+    A m;
+};
+int main() {
+  A a(5);
+  B b(a);
+  std::cout << b.m << "\n";
+  a = 5;
+  std::cout << b.m << "\n";
+  B b2(a);
+  std::cout << b2.m << "\n";
+  return 0;
+}

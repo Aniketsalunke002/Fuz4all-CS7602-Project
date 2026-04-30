@@ -1,16 +1,16 @@
 {
   "total_generated": 10,
-  "total_compiled_ok": 5,
-  "valid_rate": 0.5,
-  "unique_valid_rate": 0.5,
+  "total_compiled_ok": 6,
+  "valid_rate": 0.6,
+  "unique_valid_rate": 0.6,
   "duplicate_rate": 0.0,
-  "total_failures": 5,
-  "unique_failure_count": 7,
-  "repair_attempted_count": 5,
+  "total_failures": 4,
+  "unique_failure_count": 6,
+  "repair_attempted_count": 4,
   "repair_success_count": 0,
   "repair_success_rate": 0.0,
   "cache_hit_count": 0,
-  "cache_miss_count": 5,
-  "avg_time_per_program": 0.3011,
-  "llm_overhead": 0.6
+  "cache_miss_count": 4,
+  "avg_time_per_program": 0.3704,
+  "llm_overhead": 0.5
 }

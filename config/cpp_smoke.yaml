@@ -1,7 +1,7 @@
 # Baseline smoke config — small run for quick verification
 fuzzing:
   output_folder: outputs/baseline_smoke
-  num: 200
+  num: 10
   total_time: 1.0
   log_level: 3
   otf: true
@@ -23,6 +23,6 @@ target:
 llm:
   temperature: 1
   batch_size: 2
-  device: cpu
+  device: cuda
   model_name: bigcode/starcoderbase-1b
   max_length: 256

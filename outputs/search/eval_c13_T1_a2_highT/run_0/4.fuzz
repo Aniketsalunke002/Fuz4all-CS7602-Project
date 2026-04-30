@@ -1,0 +1,6 @@
+#include <iostream>
+int main() {
+  s1 = std::string("Hello");
+  s2 = s1;
+  std::cout << s2 << std::endl;
+}

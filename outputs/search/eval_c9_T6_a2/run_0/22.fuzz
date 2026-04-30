@@ -1,0 +1,11 @@
+#include <iostream>
+int main() {
+	std::string s = "Hello C++ World!";
+	std::string s2;
+	s2 = s;
+	std::cout << s2 << std::endl;
+	s2 = s + " Hello C++ World!";
+	std::cout << s2 << std::endl;
+	return 0;
+}
+

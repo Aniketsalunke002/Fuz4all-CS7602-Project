@@ -1,0 +1,33 @@
+#include <iostream>
+
+#include <cstdint>
+class A {
+public:
+  explicit A(int x);
+  explicit A(A&);
+  ~A() {}
+  int& operator*() {
+    return m;
+  }
+  int* operator->() {
+    return &m;
+  }
+  int m;
+};
+class B {
+public:
+  explicit B(A&);
+  ~B() {}
+  B& operator=(A);
+  A m;
+};
+int main() {
+  A a(5);
+  B b(a);
+  std::cout << b.m << "\n";
+  a = 5;
+  std::cout << b.m << "\n";
+  B b2(a);
+  std::cout << b2.m << "\n";
+  return 0;
+}

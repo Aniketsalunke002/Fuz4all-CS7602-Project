@@ -1,0 +1,9 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int i = 42;
+    int i2 = 6;
+    cout << i2 << endl;
+    return 0;
+}

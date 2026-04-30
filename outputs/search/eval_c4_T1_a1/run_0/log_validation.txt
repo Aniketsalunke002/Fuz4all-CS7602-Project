@@ -1,0 +1,109 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/0.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/0.fuzz:32:34: error: expected ‘}’ at end of input
+   32 |     Node *node2 = CreateNode(30);
+      |                                  ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/0.fuzz:24:12: note: to match this ‘{’
+   24 | int main() {
+      |            ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz:16:42: error: cannot convert ‘int (*)[10]’ to ‘int*’ in initialization
+   16 |         int* pInts_ptr_4 = new int[10][10];
+      |                                          ^
+      |                                          |
+      |                                          int (*)[10]
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz:18:41: error: ‘p’ was not declared in this scope
+   18 |         std::cout << "pInts_ptr_2: " << p
+      |                                         ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz:18:42: error: expected ‘}’ at end of input
+   18 |         std::cout << "pInts_ptr_2: " << p
+      |                                          ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/1.fuzz:7:12: note: to match this ‘{’
+    7 | int main() {
+      |            ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/3.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/5.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz:2:6: error: ‘stack’ in namespace ‘std’ does not name a template type
+    2 | std::stack<int> s;
+      |      ^~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz:2:1: note: ‘std::stack’ is defined in header ‘<stack>’; did you forget to ‘#include <stack>’?
+    1 | #include <iostream>
+  +++ |+#include <stack>
+    2 | std::stack<int> s;
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz:5:5: error: ‘s’ was not declared in this scope
+    5 |     s.pop();
+      |     ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/7.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/7.fuzz:3:2: error: #endif without #if
+    3 | #endif
+      |  ^~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/8.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/9.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/10.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/10.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/11.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/11.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz: In function ‘void PopLinkedList(Node*&, int&)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz:41:20: error: expected ‘}’ at end of input
+   41 |         value = -1;
+      |                    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz:40:5: note: to match this ‘{’
+   40 |     {
+      |     ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz:41:20: error: expected ‘}’ at end of input
+   41 |         value = -1;
+      |                    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/12.fuzz:38:1: note: to match this ‘{’
+   38 | {
+      | ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/13.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/13.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/14.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/14.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15.fuzz: In function ‘int main(int, const char**)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15.fuzz:9:2: error: expected ‘}’ at end of input
+    9 | {
+      | ~^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15_r1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15_r1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/16.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/16.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/17.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/17.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/18.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/18.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/19.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/19.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/20.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/20.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/21.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/21.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/22.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/22.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/23.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/23.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/24.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/24.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/25.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/25.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/26.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/26.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/27.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/27.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/28.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/28.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/29.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/29.fuzz is safe

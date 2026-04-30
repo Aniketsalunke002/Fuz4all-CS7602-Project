@@ -4,124 +4,19 @@
 [VERBOSE] #include <iostream>
 
 using namespace std;
-int n = 2;   
-int a[n] = {53, 23, 75, 10,};
-int i = 0;
-int main()
-{
-    a[i] = 29;      
-    i++;           
-    cout << a[0];   
-}
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
 
+#include <string>
+using namespace std;
 
-int main(){}
-
-#endif	 
-
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-
-template <class T>
-void swap(T &a, T &b)
-{
-	T temp;
-	temp = a;
-	a = b;
-	b = temp;
-}
-
-int swap(int *a, int *b)
-{
-	int r;
-	swap(a, b);
-	r = *a;
-	*a = *b;
-	*b = r;
-	return 0;
-}
-
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-int count(int i);
-
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-
-struct Node;
-class ArrayList;
-class Collection;
-
-void printNodeList(Node *head);
-void printArrayList(ArrayList *arr);
-
-class Node
-{
- public:
-     
-    Node *next;
-
-     
-    int value;
-
-     
-    Node(int value_in);
-
-     
-    ~Node();
-};
-
-class ArrayList
-{
- public:
-     
-    Node *head;
-
-     
-    int head_capacity;
-
-     
-    void addNode(Node *node, int data);
-
-     
-    int numItems() const;
-
-     
-    int dataAtPosition(int index) const;
-
-    /* Inserts a node
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-
-namespace {
-    using namespace std;
-     
-    void printString(const string& s) {
-        cout << s << endl;
-    }
-     
-    using function = std::function<void(void)>;
-     
-}
 
 int main() {
-     
-     
-    function printVoid = [](void) { cout << "In the function\n"; };
-    cout << "Hello world!" << endl;
-    printString("Clang - " + "GCC" + " - " + "Microsoft");
-    printVoid();
+    string name = "Andreas";
+    string fullname = "Andreas" + " " + "Davids";
+
+    std::cout << name << " " << fullname << std::endl;
+    cout << isspace(name) << isspace(fullname) << endl;
+    cout << endl;
+
     return 0;
 }
 
@@ -129,54 +24,205 @@ int main() {
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-#include <cmath>
-using namespace std;
-float pi=3.1415;
-int main() 
-{
-	float num = 6.18f;
-	cout << num << "PI is " << pi << endl;
-	cout << 5-num << endl;
-	cout << "8.677" << "C" << setprecision(3) << fixed << endl;
-    cout << 5 <<'/' << 2 << endl;
-	return 0;
-}
-
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-
-int main()
-{
-     
-    std::string myString = "ABC";
-    return 0;
-}
+class Stack {
+private:
+  int data[STACKLENGTH];
+  int top_;
+public:
+  Stack() {top_=-1;}
+  ~Stack() {delete [] data;}
+  int isEmpty();
+  int top();
+  void push(int data_);
+  int pop();
+};
+int main() {
+  Stack myStack;
+  while(1) {
+    int choice;
+    std::cout << "Stack is: " << myStack << std::endl;
+	std::cout << "Press 1 to push and 2 to pop." << std::endl;
+	std::cin >> choice;
+    switch(choice) {
+      case 1:  
+        std::cout << "Give Data:" << std::endl;
+        int stackdata;
+        std::cin >> stackdata;
+        myStack.push(stackdata);
+        break;
+      case 2:  
+        if(myStack.isEmpty())
+	std::cout << "Stack is Empty!" << std::endl;
+        else
+          std::cout << "Pop : " << myStack.pop()
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
 #include <string>
+
 using namespace std;
 
-using namespace Cxx17;
+class A{
+  public:
 
-int main() {
      
-}
+   A(int value) :x_(value){}
+void display() {
+    cout<< x_ << " ";
+   }
+void setX(int value){x_ = value;}
+int  getX() {return x_;}
 
+  private:
+     int x_;
+
+};
+
+class B{};
+
+class D{
+  public:
+
+     
+   D(int value) :x_(value){}
+void display() {
+    cout<< x_ << " ";
+   }
+void setX(int value){x_ = value;}
+int  getX() {return x_;}
+
+  private:
+     int x_;
+
+};
+
+extern D b1;
+
+A a1(1);
+A b2;
+C::C(int x) { c_ = x;}
+C::C(int x) : x_(x) {c_ = x;}
 
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-#include <algorithm>
-#else
-#include <cstdlib>
-#endif
 
  
-#include "std_algorithms.h"
+int main()
+{
+    std::cout<< "1 + 2 = " << 1 + 2 << std::endl;
+    std::cout<< "1 * 5 = " << 1 * 5 << std::endl;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <vector>
+  
+template<typename T>
+void printVector( const std::vector<T>& vec){
+	std::cout << "{";
+	if (! vec.empty() )
+		for ( unsigned i=0; i < vec.size()-1; i++ )
+			std::cout << vec[i] << ", ";
+	std::cout << vec[vec.size() - 1] << "}" << std::endl;
+}
+  
+void check(){
+	std::vector<std::string> vec = { "a", "b", "c" };
+	printVector( vec );
+
+	std::array<char, 5> arr = {'a', 'b', 'c', 'd', 'e'};
+	std::cout << "Array: " << std::endl;
+	printVector( arr );
+}
+
+int main(){
+	check();
+ 	return 0;    
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <vector>
+#include	<memory>
+struct X {
+public:
+  X(): x{0} {}
+  int x;
+};
+struct X *getPtr(X *x, int n);
+X *X::getPtr(X *x, int n) {
+  return x;
+}
+struct X &getRef(X x) {
+  X::getPtr(&x, -1);
+  assert(x.x == 0);
+  return x;
+}
+int main() {
+  using namespace std;
+  vector<int> vi;
+  vector<X> vx;
+  vector<shared_ptr<X>> sp;
+  {
+    X x{1};
+    getRef(getRef(x));
+    getRef(x);
+  }
+  
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main() {
+
+    std::cout << "A very long long long long long long long long long long long long long long long long long long";
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int n;
+int a[100];
+int b[100];
+
+using namespace std;
+
+class Person
+{
+public:
+	string name;  
+	int age;
+	void setName(string name) { this->name = name; }
+	const string& getName() { return name;}
+	void setAge(int age) { this->age=age; }
+	int getAge()const { return age; }
+	Person(string name, int age) { this->name = name; this->age=age; }
+	 
+	~Person() { cout << "Deleting Person, \'" << this->name << "\'." << endl; }
+	 
+	friend ostream& operator<< (ostream& os, const Person& p) {
+		os << '\t' << p.name << ", " << p.age;
+		return os;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main()
+{
+	return 0;
+}
 
 [VERBOSE] ========== sample =========

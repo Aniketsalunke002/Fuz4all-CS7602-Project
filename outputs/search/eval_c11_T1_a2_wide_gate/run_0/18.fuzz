@@ -1,0 +1,20 @@
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *b;
+};
+int main() {
+  B b;
+  return 0;
+}

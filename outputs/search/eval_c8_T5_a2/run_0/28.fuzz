@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main() {
+	int num = 10;
+	if (num < 30) {
+		cout << "Less than 30";
+	} else {
+		cout << "More than 30";
+	}
+	return 0;
+}
+

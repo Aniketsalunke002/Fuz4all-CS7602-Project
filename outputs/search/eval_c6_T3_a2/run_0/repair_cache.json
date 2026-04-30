@@ -1,0 +1,4 @@
+{
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c6_T3_a2/run_0/2.fuzz:N:M: error: \u2018i\u2019 does not name a type": "#include <iostream>\n\nnamespace {\n    int i = 1;\n    i = i + 2;\n    return;\n}\nint main() {\n    foo();\n    return 0;\n}",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c6_T3_a2/run_0/9.fuzz:N:M: error: expected unqualified-id before \u2018++\u2019 token": "#include <iostream>\n\nnamespace {\n    int i = 1;\n    ++i;\n}\nint main() {\n    bar();\n    return 0;\n}"
+}

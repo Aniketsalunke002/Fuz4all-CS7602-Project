@@ -3,12 +3,17 @@
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-int main(int argc, char* argv[])
+int
+main ()
 {
-    const char* input;
-    int n;
-    std::cin >> input >> n;
-    std::cout << n / 2 + n % 2 << std::endl;
+    int a= 2 + 3; cout << "a=" << a;
+    char *p = "hello"; 
+    cout << "strlen(" << p 
+        << ") = " << strlen(p) << endl;
+     
+     
+     
+     
     return 0;
 }
 
@@ -17,30 +22,115 @@ int main(int argc, char* argv[])
 [VERBOSE] #include <iostream>
 
 
-int main() {
-  std::cout << "Hello World!";
+int
+main() {
+	
+	
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <set>
+#include <map>
+#include <fstream>
+#include <string.h>
+
+int main()
+{
+       std::string x = "";
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+void makeArray()
+{
+}
+
+int main()
+{
+    makeArray();
+    return 0;
 }
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-#include <string>
 using namespace std;
 
-class test {};
+class Cat
+{
+  private:
+    int *m_memory;
+    int m_size;
+    int m_count;
+  public:
+    Cat(int size = 10) { m_size = size; m_memory = new int[size]; }
+    ~Cat()
+    {
+      for (int i=0; i<m_count; i++)
+        cout<<"Cat["<<i<<"]="<<m_memory[i]<<endl;
+      delete [] m_memory;
+      m_memory = 0;
+    }
+    double say_name() { return (double)m_count/m_size; }
+};
+
+int main() {
+}
 
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
 
-#include "String.h"
+using namespace std;
 
-String newString(std::string first, std::string second);
+enum {
+    SINGLE,
+    PICKLIST,
+    MULTI_SIZE
+};
+
+const int MAX = 10;
+
+struct Item {};
+struct Drink {
+    char name[MAX];
+    int count;
+    float cost;
+};
+struct DrinkPicker {
+    Drink drinks[MAX];
+    int numberItems;
+};
+
+class DrinksPicker
+{
+public:
+    void getPickupItems(const Item* picklist);
+private:
+    DrinkPicker picker;
+    Drink currentPickupItem;
+};
+
+#endif 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <string>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
 
 
 int main() {
-    std::cout << newString("A", "B") << std::endl;
     return 0;
 }
 
@@ -48,68 +138,61 @@ int main() {
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
 
-
-#include <string>
-#include <queue>
-
-struct Node
+struct foo
 {
-   int val;
-   bool visited;
-   std::queue<int> path;
+	foo()
+	{
+		bool b = true;   
+		this->b = &b;
+
+		this->v1 = false;  
+	}
+
+	foo(const foo &) = delete;
+	foo& operator=(const foo &) = delete;
+
+	friend std::ostream & operator<<(std::ostream &os, const foo &f);
+
+	bool v1;
+	bool *b;
 };
 
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-int main(int argc, char* argv[])
+std::ostream & operator<<(std::ostream &os, const foo &f)
 {
-    auto res = new String{"Hello World"};
-    (*res).append("!");
-
-    std::cout << *res << std::endl;
+	os << f.v1? "false" : "true";
+	return os;
 }
 
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-
-namespace CPlusPlus {
-    int add(int a, int b) {
-      return a + b;
-    }
-
-    int multiply(int a, int b) {
-      return a * b;
-    }
-}
-
-[VERBOSE] ========== sample =========
-[VERBOSE] ========== sample =========
-[VERBOSE] #include <iostream>
-
-
-void main()
+void f()
 {
-    std::string str = "Hello";
-    std::cout << str.capacity() << '\n';
-    str.resize(5);
-    std::cout << str.capacity() << '\n';
-    str.resize(2, 'C');
-    std::cout << str.capacity() << '\n';
-}
+	foo foo1;
+	foo foo2;
+	foo *pf, *p;
+	pf = &foo1;
+	p = &foo1;
 
+	foo1.v1 = false;
+
+	foo2 = *pf;   
 [VERBOSE] ========== sample =========
 [VERBOSE] ========== sample =========
 [VERBOSE] #include <iostream>
 
-#include <string>
-double max_power(double a, double b);
-#endif	 
+#include <complex>
+using complex double;
+
+int main()
+{
+	complex double val = complex<double>(1, 2);
+	complex<double>(1, 2);
+	complex<double> num(1,2);
+	num.imag(2);
+	num = num / num;
+	val = val + num;
+	std::cout << val.real() << std::endl;
+
+	return 0;
+}
+
 [VERBOSE] ========== sample =========

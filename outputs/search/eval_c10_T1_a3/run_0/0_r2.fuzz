@@ -1,0 +1,60 @@
+#include <iostream>
+
+
+#include <vector>
+#include <algorithm>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <functional>
+#include <algorithm>
+#include <cassert>
+#include <sstream>
+
+std::vector<std::string> split(const std::string& s, char delim);
+
+std::vector<std::string> split(const std::string& s, const std::string& delim)
+{
+    std::vector<std::string> tokens;
+    std::string token;
+    bool in_delim = false;
+    for (auto i = s.begin(); i!= s.end(); ++i) {
+        if (i!= s.begin() && delim == *i) {
+            in_delim = true;
+            continue;
+        }
+
+        if (in_delim) {
+            if (i!= s.end() && delim.find(*i) == std::string::npos) {
+                i++;
+            }
+            token += *i;
+        } else {
+            if (*i == delim) {
+                tokens.push_back(token);
+                token.clear();
+                in_delim = true;
+            }
+        }
+    }
+    if (!token.empty()) {
+        tokens.push_back(token);
+    }
+
+    return tokens;
+}
+
+int main()
+{
+    const std::string str {"cat dog cat dog cat dog cat dog cat dog cat dog cat dog cat dog"};
+
+    std::vector<std::string> v=split(str, ',');
+    assert(v == split(str, " "));
+    assert(v == split(str, " dog "));
+
+    std::vector<std::string> v2=split(str, " ");
+    assert(v == v2);
+
+    std::vector<std::string> v3=split(str, " ");
+    assert(v3 == split(str, " dog "));
+}

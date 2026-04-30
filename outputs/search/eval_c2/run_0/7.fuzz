@@ -1,10 +1,11 @@
 #include <iostream>
+using namespace std;
+#define pi 3.141592654
+#define R 1000
 int main()
 {
-	int counter = 1;
-	while(counter <= 100) {
-		new int[1][1]{counter};
-		std::cout << counter;
-		counter++;
-	}
+    int newpi = 2 * PI;
+     
+    cout << "Pi * 2: " << newpi << endl;
+    return 0;
 }

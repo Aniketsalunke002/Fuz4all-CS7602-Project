@@ -1,0 +1,6 @@
+{
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c13_T1_a2_highT/run_0/1.fuzz: In function \u2018int main()\u2019:": "#include <iostream>\n\n\nint main() {\n  std::string s1 = \"Hello world\";\n  auto& ptr = s1;\n  std::cout << ptr << std::endl;\n}",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c13_T1_a2_highT/run_0/4.fuzz: In function \u2018int main()\u2019:": "#include <iostream>\n\nint main() {\n  std::string s1 = \"Hello\";\n  std::string s2 = s1;\n  std::cout << s2 << std::endl; // OutputHello\n}",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c13_T1_a2_highT/run_0/13.fuzz:N:M: error: redefinition of \u2018int main()\u2019": "#include <iostream>\n\n#include <string>\nusing namespace std;\nint main() {\n\tstring str = \"Hello world\";\n\tcout << str << endl;\n}",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c13_T1_a2_highT/run_0/24.fuzz: In function \u2018int main()\u2019:": "#include <iostream>\n\n#include <string>\nusing namespace std;\nstring str = \"Hello world\";\nchar c[20] = { 65 };\nc = str.c_str();\ncout << str << endl;\ncout << c << endl;\nreturn 0;"
+}

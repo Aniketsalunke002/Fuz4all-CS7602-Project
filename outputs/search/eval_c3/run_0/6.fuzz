@@ -1,14 +1,29 @@
 #include <iostream>
 
-#include <cmath>
-using namespace std;
-float pi=3.1415;
-int main() 
-{
-	float num = 6.18f;
-	cout << num << "PI is " << pi << endl;
-	cout << 5-num << endl;
-	cout << "8.677" << "C" << setprecision(3) << fixed << endl;
-    cout << 5 <<'/' << 2 << endl;
-	return 0;
+#include <vector>
+#include	<memory>
+struct X {
+public:
+  X(): x{0} {}
+  int x;
+};
+struct X *getPtr(X *x, int n);
+X *X::getPtr(X *x, int n) {
+  return x;
 }
+struct X &getRef(X x) {
+  X::getPtr(&x, -1);
+  assert(x.x == 0);
+  return x;
+}
+int main() {
+  using namespace std;
+  vector<int> vi;
+  vector<X> vx;
+  vector<shared_ptr<X>> sp;
+  {
+    X x{1};
+    getRef(getRef(x));
+    getRef(x);
+  }
+  

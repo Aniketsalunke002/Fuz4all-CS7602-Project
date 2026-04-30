@@ -1,11 +1,25 @@
 #include <iostream>
 
-#include <string>
+
+int n;
+int a[100];
+int b[100];
+
 using namespace std;
 
-using namespace Cxx17;
-
-int main() {
-     
-}
-
+class Person
+{
+public:
+	string name;  
+	int age;
+	void setName(string name) { this->name = name; }
+	const string& getName() { return name;}
+	void setAge(int age) { this->age=age; }
+	int getAge()const { return age; }
+	Person(string name, int age) { this->name = name; this->age=age; }
+	 
+	~Person() { cout << "Deleting Person, \'" << this->name << "\'." << endl; }
+	 
+	friend ostream& operator<< (ostream& os, const Person& p) {
+		os << '\t' << p.name << ", " << p.age;
+		return os;

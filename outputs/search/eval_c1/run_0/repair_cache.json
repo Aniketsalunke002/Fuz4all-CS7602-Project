@@ -1,4 +1,4 @@
 {
-  "COMPILE:/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/8.fuzz:N:M: error: \u2018::main\u2019 must return \u2018int\u2019": "What is wrong here?\n<issue_comment>username_0: I think it is a bug in `string_view`. I am trying to use",
-  "COMPILE:/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c1/run_0/9.fuzz:N:M: error: #endif without #if": "Expected result:\n- The program should compile with -std=c++23.\n\n---\n\n**Note**: This file was automatically generated. Edit it directly in the source code editor.\n\n**Note**: This file was generated on: Mon Jan 26 21:23:45 2021"
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/0.fuzz: In function \u2018int main()\u2019:": "#include <iostream>\n\n\nint\nmain ()\n{\n    int a= 2 + 3;\n    std::cout << \"a=\" << a;\n    char *p = \"hello\";\n    std::cout << \"strlen(\" << p << \") = \" << std::strlen(p) << std::endl",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c1/run_0/9.fuzz:N:M: error: expected nested-name-specifier before \u2018complex\u2019": "#include <iostream>\n\n\n#include <complex>\nusing complex double;\n\nint main()\n{\n\tcomplex double val = complex<double>(1,"
 }

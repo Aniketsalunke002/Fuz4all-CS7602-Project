@@ -1,0 +1,29 @@
+#include <iostream>
+
+#include <map>
+
+using namespace std;
+
+class Employee {
+
+public:
+    Employee() = default;
+    Employee(string name, int age) : name(name), age(age) {}
+    string name;
+    int age;
+};
+
+class Manager : public Employee {
+
+public:
+    Manager() = default;
+    Manager(string name, int age, const map<string, Employee>& employees) : Employee(name, age), employees(employees) {}
+    const map<string, Employee>& employees;
+};
+
+int main() {
+    Manager manager("<NAME>", 30, {{"<NAME>", 18}, {"<NAME>", 30}});
+    cout << manager.employees["<NAME>"] << endl;
+
+    return 0;
+}

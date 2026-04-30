@@ -1,0 +1,5 @@
+{
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/6.fuzz:N:M: error: \u2018stack\u2019 in namespace \u2018std\u2019 does not name a template type": "#include <iostream>\n\n#include <stack>\nint main()\n{\n    std::stack<int> s;\n    s.pop();\n    s.pop();\n    s.push(5);\n    s.push(3",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/7.fuzz:N:M: error: #endif without #if": "#include <iostream>\n\n\n#endif",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c4_T1_a1/run_0/15.fuzz: In function \u2018int main(int, const char**)\u2019:": "#include <iostream>\n\n\nusing namespace std;\n\nint main(int argc, char const *argv[])\n{\n    cout << \"Hello World\\n\";\n    return 0;\n}"
+}

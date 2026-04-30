@@ -1,0 +1,28 @@
+#include <iostream>
+
+#include <string>
+
+class Person {
+public:
+    Person(std::string n) : name(n) {}
+    Person(const Person &p) : name(p.name) {}
+    Person &operator=(const Person &p) {
+        name = p.name;
+        return *this;
+    }
+    const std::string &getName() { return name; }
+private:
+    std::string name;
+};
+
+void printName(const Person &p) {
+    std::cout << p.getName() << std::endl;
+}
+
+int main() {
+    Person p("John");
+    printName(p);
+    p = "Jane";
+    printName(p);
+    return 0;
+}

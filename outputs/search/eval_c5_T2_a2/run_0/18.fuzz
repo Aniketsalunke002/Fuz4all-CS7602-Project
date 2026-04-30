@@ -1,0 +1,13 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+int main() {
+    float f = 10.10;
+    double d = 10.10;
+    string s = "a";
+    printf("%f\n", f);
+    printf("%f\n", d);
+    printf("%s\n", s);
+    return 0;
+}

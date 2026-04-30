@@ -1,8 +1,28 @@
 #include <iostream>
 
-using namespace std;
-int main() {
-  int a;
-  cout << "Please enter a number between 0-20: ";
-  cin >> a;
-}
+#ifdef NDEBUG
+#    define NDEBUG  
+#endif
+
+#if __cplusplus < 201103L || __clang_major__ < 6
+#    define NEVER_INLINE __attribute__((unused)) inline
+#    define ALWAYS_INLINE  __attribute__((always_inline)) inline
+#else
+#    define NEVER_INLINE
+#    define IS_ALWAYS_INLINE(x) __has_feature(x) &&!__has_feature(cxx_inline)
+#    define ALWAYS_INLINE  __attribute__((always_inline)) inline
+#endif
+
+#if!defined(NDEBUG)
+#    define DEBUG 1
+#else
+#    define DEBUG 0
+#endif
+
+#ifdef _MSC_VER
+#   define EXPORT __declspec(dllexport)
+#else
+#   define EXPORT __attribute__((visibility("default")))
+#endif
+
+char _stringbuffer[80] =

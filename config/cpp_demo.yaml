@@ -6,7 +6,7 @@ fuzzing:
   # where to store the results (relative to the where you are calling fuzz.py)
   output_folder: ../fastd/fuzzall/FuzzAll/experiment/full_run/cpp/run
   # number of fuzzing iterations
-  num: 900
+  num: 200
   # total fuzzing time in hours
   total_time: 1
   # level of logging: 1 = INFO, 2 = TRACE, 3 = VERBOSE
@@ -69,7 +69,7 @@ llm:
   # model name according to the HuggingFace model hub
   # note that you can also export your cache such as this:
   # export TRANSFORMERS_CACHE=/blabla/cache/
-  model_name: bigcode/starcoderbase
+  model_name: bigcode/starcoderbase-7b
   # local model folder (absolute path)
   # if not set, the model will be downloaded from the HuggingFace model hub
   # model_folder: /home/username/local_model_repository

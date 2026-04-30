@@ -1,0 +1,426 @@
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <new>
+
+class Node {
+    public:
+        Node(int x) : value(x), next(nullptr) {
+        }
+        Node *next;
+        int value;
+};
+
+ 
+Node *CreateNode(int x) {
+    Node *node = new Node(x);
+    return node;
+}
+
+ 
+void DeleteNode(Node *node) {
+    delete node;
+}
+
+int main() {
+     
+    Node *head = CreateNode(10);
+
+     
+    Node *node = CreateNode(20);
+
+     
+    Node *node2 = CreateNode(30);
+
+     
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <iomanip>
+
+#include <new>
+
+int main() {
+	 
+	int* pInts = new int[10];
+	 
+	int* pInts_ptr = new int;
+
+	 
+	int* pInts_ptr_2 = new int[10];  
+	int* pInts_ptr_3 = new int(10);  
+	int* pInts_ptr_4 = new int[10][10];  
+	int arr[10][10];  
+	std::cout << "pInts_ptr_2: " << p
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+int main()
+{
+    std::cout << "Hello, world!";
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <stack>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <stack>
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <stack>
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+std::stack<int> s;
+int main()
+{
+    s.pop();
+    s.pop();
+    s.push(5);
+    s.push(3);
+    s.push(9);
+    s.push(8);
+    s.push(1);
+    while(!s.empty())
+        std::cout << s.top() << " ";
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#endif  
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <stack>
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <stack>
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <stack>
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+struct Node
+{
+    int value;
+    Node *next;
+};
+
+Node *CreateLinkedList(int value)
+{
+    Node *root = new Node;
+    root->value = value;
+    root->next = nullptr;
+    return root;
+}
+
+void PrintLinkedList(Node *root)
+{
+    int counter = 0;
+    while (root!= nullptr)
+    {
+        std::cout << root->value << " -> ";
+        root = root->next;
+        counter++;
+    }
+    std::cout << std::endl;
+}
+
+void PushLinkedList(Node *root, int value)
+{
+    Node *newNode = CreateLinkedList(value);
+    newNode->next = root;
+    root = newNode;
+}
+
+void PopLinkedList(Node *&root, int &value)
+{
+    if (root == nullptr)
+    {
+        value = -1;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <stack>
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <stack>
+
+int main()
+{
+  std::cout << "Hello World!\n";
+  std::cout << "Hello World!\n";
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    cout << "Hello World\n";
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    cout << "Hello World\n";
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout << "Hello World\n";
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+     
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+     
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main()
+{
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+}
+
+[VERBOSE] ========== sample =========

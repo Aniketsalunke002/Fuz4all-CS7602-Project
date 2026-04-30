@@ -5,7 +5,7 @@
 # Configuration of the overall fuzzing setup
 fuzzing:
   output_folder: ../fastd/fuzzall/FuzzAll/experiment/full_run/cpp/run
-  num: 900
+  num: 200
   total_time: 1
   log_level: 3
   otf: true
@@ -34,7 +34,7 @@ llm:
   temperature: 1
   batch_size: 30
   device: cuda
-  model_name: bigcode/starcoderbase
+  model_name: bigcode/starcoderbase-7b
   max_length: 1024
 
 # --------------------------------------------------------------------------- #

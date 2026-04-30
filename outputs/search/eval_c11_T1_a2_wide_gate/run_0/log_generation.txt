@@ -1,0 +1,1144 @@
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+class C {
+public:
+    int x;
+};
+
+ 
+ 
+void foo() {
+    auto y = new C();
+     
+}
+
+int main() {
+    auto z = new C();
+     
+    foo();
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+};
+
+int main() {
+  C c;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+};
+void c() {
+  B b;
+  A a;
+  a = b;
+  b = c;
+}
+int main() {
+  c();
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A(int x) { m = x; std::cout << "A::A(int)\n"; }
+    A(A& a) { m = a.m; std::cout << "A::A(A&)\n"; }
+    ~A() { std::cout << "A::~A()\n"; }
+    int& operator*() { return m; }
+    int* operator->() { return &m; }
+    int m;
+};
+class B {
+  public:
+    B(A& a) { m = a.m; std::cout << "B::B(A&)\n"; }
+    ~B() { std::cout << "B::~B()\n"; }
+    A& operator=(A a) { m = a.m; std::cout << "B::operator=(A)\n"; return *this; }
+    A m;
+};
+int main() {
+  A a(5);
+  B b(a);
+  std::cout << b.m << "\n";
+  a = 5;
+  std::cout << b.m << "\n";
+  B b2(a);
+  std::cout << b2.m << "\n";
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *c;
+};
+int main() {
+  C c;
+  c.c = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+};
+void A::mutate() {
+  std::cout << "A::mutate()\n";
+}
+void B::mutate() {
+  std::cout << "B::mutate()\n";
+}
+void C::mutate() {
+  std::cout << "C::mutate()\n";
+}
+int main() {
+  A a;
+  B b;
+  C c;
+  a.mutate();
+  b.mutate();
+  c.mutate();
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *c;
+};
+int main() {
+  C c;
+  c.c = new B;
+  return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *c;
+};
+int main() {
+  C c;
+  c.c = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  A a;
+  B b;
+  C c;
+  c.a = b;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  c.a->a = new A;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  c.a->a = new A;
+  c.a->a->a = c.a;
+  c.a->a->a->a = c.a;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    A *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  C c;
+  c.a = new B;
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *a;
+};
+int main() {
+  B b;
+  C c;
+  c.a = &b;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *b;
+};
+int main() {
+  C c;
+  c.b = new B;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *b;
+};
+int main() {
+  C c;
+  c.b = new B;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *b;
+};
+int main() {
+  B b;
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(A const& a) { std::cout << "A::A(A const&)\n"; }
+    A(A &&a) { std::cout << "A::A(A &&)\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(A const& a) { std::cout << "B::B(A const&)\n"; }
+    B(A &&a) { std::cout << "B::B(A &&)\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(A const& a) { std::cout << "C::C(A const&)\n"; }
+    C(A &&a) { std::cout << "C::C(A &&)\n"; }
+    C(B const& b) { std::cout << "C::C(B const&)\n"; }
+    C(B &&b) { std::cout << "C::C(B &&)\n"; }
+    virtual ~C() { std::cout << "C::~C()\n"; }
+};
+int main() {
+  C c;
+  c = C(A(B(A("")));
+  c = C(A(B(B("")));
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    B *b;
+};
+int main() {
+  B b;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C : public B {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    A *a;
+};
+int main() {
+  C c;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    virtual ~C() { std::cout << "C::~C()\n"; }
+    B *b;
+};
+int main() {
+  C c;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    virtual ~C() { std::cout << "C::~C()\n"; }
+    B *b;
+};
+int main() {
+  C c;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    virtual ~A() { std::cout << "A::~A()\n"; }
+    B *b;
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    virtual ~C() { std::cout << "C::~C()\n"; }
+};
+int main() {
+  A a;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(int i) { std::cout << "B::B(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  D d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(int i) { std::cout << "B::B(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  D d;
+  return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(int i) { std::cout << "B::B(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  D d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(int i) { std::cout << "B::B(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(int i) { std::cout << "B::B(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::B()\n"; }
+    B(int i) { std::cout << "B::B(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  B b;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::A()\n"; }
+    B(int i) { std::cout << "B::A(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::A()\n"; }
+    B(int i) { std::cout << "B::A(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int i) { std::cout << "A::A(int)\n"; }
+};
+class B {
+  public:
+    B() { std::cout << "B::A()\n"; }
+    B(int i) { std::cout << "B::A(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int i) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int i) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  D d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+class A {
+  public:
+    A() { std::cout << "A::A()\n"; }
+    A(int) { std::cout << "A::A(int)\n"; }
+};
+class B : public A {
+  public:
+    B() { std::cout << "B::A()\n"; }
+    B(int) { std::cout << "B::A(int)\n"; }
+};
+class C {
+  public:
+    C() { std::cout << "C::C()\n"; }
+    C(int) { std::cout << "C::C(int)\n"; }
+};
+class D : public B {
+  public:
+    D() { std::cout << "D::D()\n"; }
+    D(int) { std::cout << "D::D(int)\n"; }
+};
+int main() {
+  C c;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========

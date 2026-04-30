@@ -1,0 +1,85 @@
+#include <iostream>
+
+
+using namespace std;
+
+class myClass{
+	int i;
+public:
+	myClass(int a = 1);
+	void show();
+	myClass(const myClass &b);
+	myClass(myClass &&b);
+	myClass(const myClass &b, const myClass &c);
+	myClass(myClass &&b, const myClass &c);
+	myClass(const myClass &b, const myClass &c, int i);
+	myClass(myClass &&b, const myClass &c, int i);
+	~myClass();
+};
+
+myClass::myClass(const myClass &b, const myClass &c)
+{
+	cout << "this is myClass" << endl;
+	cout << "i = " << i << endl;
+	cout << "b.i = " << b.i << endl;
+	cout << "c.i = " << c.i << endl;
+}
+
+myClass::myClass(myClass &&b, const myClass &c)
+{
+	cout << "this is myClass (moved)" << endl;
+	cout << "i = " << i << endl;
+	cout << "b.i = " << b.i << endl;
+	cout << "c.i = " << c.i << endl;
+}
+
+myClass::myClass(const myClass &b, const myClass &c, int i)
+{
+	cout << "this is myClass (param)" << endl;
+	cout << "i = " << i << endl;
+	cout << "b.i = " << b.i << endl;
+	cout << "c.i = " << c.i << endl;
+}
+
+myClass::myClass(myClass &&b, const myClass &c, int i)
+{
+	cout << "this is myClass (moved param)" << endl;
+	cout << "i = " << i << endl;
+	cout << "b.i = " << b.i << endl;
+	cout << "c.i = " << c.i << endl;
+}
+
+myClass::myClass(int a)
+{
+	cout << "this is myClass (param)" << endl;
+	cout << "i = " << a << endl;
+}
+
+myClass::myClass()
+{
+	cout << "this is myClass" << endl;
+	cout << "i = " << i << endl;
+}
+
+myClass::~myClass()
+{
+	cout << "this is myClass::~myClass" << endl;
+	cout << "i = " << i << endl;
+}
+
+void myClass::show()
+{
+	cout << "this is myClass::show" << endl;
+	cout << "i = " << i << endl;
+}
+
+int main()
+{
+	myClass a(1);
+	myClass b(2, 3);
+	myClass c(b, a);
+	myClass d(c);
+	c.show();
+	d.show();
+	return 0;
+}

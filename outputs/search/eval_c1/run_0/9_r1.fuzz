@@ -1,8 +1,9 @@
-Expected result:
-- The program should compile with -std=c++23.
+#include <iostream>
 
----
 
-**Note**: This file was automatically generated. Edit it directly in the source code editor.
+#include <complex>
+using complex double;
 
-**Note**: This file was generated on: Mon Jan 26 21:23:45 2021
+int main()
+{
+	complex double val = complex<double>(1,

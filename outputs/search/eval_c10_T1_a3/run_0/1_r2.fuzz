@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+struct Point {
+	int x, y;
+};
+struct Line {
+	Point start, end;
+	Line(Point a, Point b) {
+		start = a;
+		end = b;
+	}
+	void print() {
+		cout << "start: " << start.x << " " << start.y << endl;
+		cout << "end: " << end.x << " " << end.y << endl;
+	}
+};
+struct Polygon {
+	vector<Point> points;
+	Polygon(int n) {
+		for (int i = 0; i < n; i++) {
+			points.push_back({i, 0});
+		}
+	}
+	void print() {
+		for (int i = 0; i < points.size(); i++) {
+			cout << points[i].x << " " << points[i].y << endl;
+		}
+	}
+};
+int main() {
+	return 0;
+}

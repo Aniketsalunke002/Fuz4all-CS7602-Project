@@ -1,11 +1,10 @@
 #include <iostream>
+using namespace std;
+#define PI 3.141592654
+#define R 1000
 int main()
 {
-	int counter = 0;
-	while(counter <= 100){
-		new std::string[1][1](counter);
-#warning std::string does not store char
-		std::cout << counter;
-		counter++;
-	}
+    cout << "Hello World!" << endl;
+    cout << "Now we are modifying, so now we will read R" << endl;
+    return 0;
 }

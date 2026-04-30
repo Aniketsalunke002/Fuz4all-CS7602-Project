@@ -1,20 +1,11 @@
 #include <iostream>
 
+#include <memory>
 
-int main(int argc, char const *argv[])
-{
-    #pragma GCC optimize ("O0")
-
-    int foo = 5;  
-    float pi = 3.14f;  
-    double d = 3.14;  
-
-    std::cout << foo << std::endl;
-
-     
-    foo++;
-
-    std::cout << foo << std::endl;
-
-    double d2 = (float)5;  
+int main() {
+    std::cout << "Hello world" << std::endl;
+    auto ptr1 = std::make_shared<int>(3);
+    auto ptr2 = std::make_unique<int>(10);
+    std::cout << *ptr1 << ptr2.use_count() << ptr1.use_count() << std::endl;
+    return 0;
 }

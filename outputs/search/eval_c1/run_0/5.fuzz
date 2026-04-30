@@ -1,12 +1,34 @@
 #include <iostream>
 
 
-#include <string>
-#include <queue>
+using namespace std;
 
-struct Node
-{
-   int val;
-   bool visited;
-   std::queue<int> path;
+enum {
+    SINGLE,
+    PICKLIST,
+    MULTI_SIZE
 };
+
+const int MAX = 10;
+
+struct Item {};
+struct Drink {
+    char name[MAX];
+    int count;
+    float cost;
+};
+struct DrinkPicker {
+    Drink drinks[MAX];
+    int numberItems;
+};
+
+class DrinksPicker
+{
+public:
+    void getPickupItems(const Item* picklist);
+private:
+    DrinkPicker picker;
+    Drink currentPickupItem;
+};
+
+#endif 

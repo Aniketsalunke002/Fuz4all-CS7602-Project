@@ -1,3 +1,46 @@
 #include <iostream>
 
-int count(int i);
+#include <string>
+
+using namespace std;
+
+class A{
+  public:
+
+     
+   A(int value) :x_(value){}
+void display() {
+    cout<< x_ << " ";
+   }
+void setX(int value){x_ = value;}
+int  getX() {return x_;}
+
+  private:
+     int x_;
+
+};
+
+class B{};
+
+class D{
+  public:
+
+     
+   D(int value) :x_(value){}
+void display() {
+    cout<< x_ << " ";
+   }
+void setX(int value){x_ = value;}
+int  getX() {return x_;}
+
+  private:
+     int x_;
+
+};
+
+extern D b1;
+
+A a1(1);
+A b2;
+C::C(int x) { c_ = x;}
+C::C(int x) : x_(x) {c_ = x;}

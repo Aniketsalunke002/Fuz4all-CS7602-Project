@@ -1,37 +1,52 @@
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz: In function ‘int main(int, const char**)’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/0.fuzz:6:13: error: ‘#pragma GCC optimize’ is not allowed inside functions
-    6 |     #pragma GCC optimize ("O0")
-      |             ^~~
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/1.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/1.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/2.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/2.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/3.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/3.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz: In function ‘void test()’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/4.fuzz:19:15: error: cannot convert ‘int*’ to ‘B*’ in initialization
-   19 |   B *b3 = b2.f();
-      |           ~~~~^~
-      |               |
-      |               int*
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz:7:2: warning: #warning std::string does not store char [-Wcpp]
-    7 | #warning std::string does not store char
-      |  ^~~~~~~
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz: In function ‘int main()’:
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz:6:39: error: array must be initialized with a brace-enclosed initializer
-    6 |                 new std::string[1][1](counter);
-      |                                       ^~~~~~~
-/home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/5.fuzz:6:46: error: array must be initialized with a brace-enclosed initializer
-    6 |                 new std::string[1][1](counter);
-      |                                              ^
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/6.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/6.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/7.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/7.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/8.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/8.fuzz is safe
-[TRACE] Validating /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/9.fuzz ...
-[VERBOSE] /home/aniket.salunke/fuzz4all-patched-version-2/fuzz4all-main/outputs/search/eval_c2/run_0/9.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/0.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/0.fuzz:9:32: error: ‘class std::unique_ptr<int, std::default_delete<int> >’ has no member named ‘use_count’
+    9 |     std::cout << *ptr1 << ptr2.use_count() << ptr1.use_count() << std::endl;
+      |                                ^~~~~~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/1.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/1.fuzz:28:25: error: expected primary-expression at end of input
+   28 | char _stringbuffer[80] =
+      |                         ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/2.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/2.fuzz:17:1: error: ‘vector’ does not name a type
+   17 | vector<T> convert(const vector<A>& args)
+      | ^~~~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/3.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/5.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz: In constructor ‘Car::Car()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz:6:9: error: ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    6 |         cout << "Cars are initialized" << endl;
+      |         ^~~~
+      |         std::cout
+In file included from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz:1:
+/usr/include/c++/11/iostream:61:18: note: ‘std::cout’ declared here
+   61 |   extern ostream cout;          /// Linked to standard output
+      |                  ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz:6:43: error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+    6 |         cout << "Cars are initialized" << endl;
+      |                                           ^~~~
+      |                                           std::endl
+In file included from /usr/include/c++/11/iostream:39,
+                 from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz:1:
+/usr/include/c++/11/ostream:684:5: note: ‘std::endl’ declared here
+  684 |     endl(basic_ostream<_CharT, _Traits>& __os)
+      |     ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/6.fuzz:18:5: error: ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7.fuzz:7:21: error: ‘PI’ was not declared in this scope; did you mean ‘pi’?
+    7 |     int newpi = 2 * PI;
+      |                     ^~
+      |                     pi
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7_r1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7_r1.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/8.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/9.fuzz is safe

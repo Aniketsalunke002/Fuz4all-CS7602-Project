@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int i = 42;
+    int i2 = 6;
+    i = 26;
+    i2 = 26;
+    cout << i << endl;
+    cout << i2 << endl;
+    return 0;
+}
+ 
+#include <iostream>
+using namespace std;
+int main()
+{
+    int year = 2019;
+    int month = 12;
+    int day = 31;
+    cout << "The previous year is " << year << "." << endl;
+    cout << "The previous month is " << month << "." << endl;
+    cout << "The previous day is " << day << "." << endl;
+    return 0;
+}

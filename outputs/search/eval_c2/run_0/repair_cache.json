@@ -1,0 +1,4 @@
+{
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/0.fuzz: In function \u2018int main()\u2019:": "#include <iostream>\n\n\n#include <memory>\n\nint main() {\n    std::cout << \"Hello world\" << std::endl;\n    auto ptr",
+  "COMPILE:/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c2/run_0/7.fuzz: In function \u2018int main()\u2019:": "#include <iostream>\n\n#include <math.h>\n#include <stdlib.h>\n\nint main()\n{\n    int newpi = 2 * M_PI;\n\n    std::cout << \"Pi * 2: \" << newpi << std::endl;\n    return 0;\n}"
+}

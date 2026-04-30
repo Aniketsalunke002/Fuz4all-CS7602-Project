@@ -1,0 +1,43 @@
+#include <iostream>
+
+class A {
+public:
+  A() { std::cout << "A::A()\n"; }
+  A(A const& a) { std::cout << "A::A(A const&)\n"; }
+  A(A &&a) { std::cout << "A::A(A &&)\n"; }
+  virtual ~A() { std::cout << "A::~A()\n"; }
+};
+class B {
+public:
+  B() { std::cout << "B::B()\n"; }
+  B(A const& a) { std::cout << "B::B(A const&)\n"; }
+  B(A &&a) { std::cout << "B::B(A &&)\n"; }
+  virtual ~B() { std::cout << "B::~B()\n"; }
+};
+class C {
+public:
+  C() { std::cout << "C::C()\n"; }
+  C(A const& a) { std::cout << "C::C(A const&)\n"; }
+  C(A &&a) { std::cout << "C::C(A &&)\n"; }
+  C(B const& b) { std::cout << "C::C(B const&)\n"; }
+  C(B &&b) { std::cout << "C::C(B &&)\n"; }
+  virtual ~C() { std::cout << "C::~C()\n"; }
+};
+int main() {
+  C c;
+  c = C(A(B(A(""))));
+  c = C(A(B(B(""))));
+  return 0;
+}
+// #include <iostream>
+// class A {
+//   public:
+//     A() { std::cout << "A::A()\n"; }
+//     A(A const& a) { std::cout << "A::A(A const&)\n"; }
+//     A(A &&a) { std::cout << "A::A(A &&)\n"; }
+//     virtual ~A() { std::cout << "A::~A()\n"; }
+// };
+// class B {
+//   public:
+//     B() { std::cout << "B::B()\n"; }
+//     B(A const& a) { std::

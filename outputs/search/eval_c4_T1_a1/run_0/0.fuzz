@@ -1,0 +1,34 @@
+#include <iostream>
+
+#include <new>
+
+class Node {
+    public:
+        Node(int x) : value(x), next(nullptr) {
+        }
+        Node *next;
+        int value;
+};
+
+ 
+Node *CreateNode(int x) {
+    Node *node = new Node(x);
+    return node;
+}
+
+ 
+void DeleteNode(Node *node) {
+    delete node;
+}
+
+int main() {
+     
+    Node *head = CreateNode(10);
+
+     
+    Node *node = CreateNode(20);
+
+     
+    Node *node2 = CreateNode(30);
+
+     

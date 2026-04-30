@@ -1,0 +1,10 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+int main() {
+    float f = 10.10;
+    char c = 'a';
+    cout << f << " " << c << endl;
+    return 0;
+}

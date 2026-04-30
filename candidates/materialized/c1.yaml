@@ -2,12 +2,12 @@ fuzzing:
   evaluate: false
   log_level: 3
   no_input_prompt: true
-  num: 20
+  num: 10
   otf: true
   output_folder: outputs/repair_smoke
   prompt_strategy: 2
   resume: false
-  total_time: 0.03
+  total_time: 1.0
   use_hand_written_prompt: false
 llm:
   batch_size: 10

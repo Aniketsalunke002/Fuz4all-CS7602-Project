@@ -1,0 +1,122 @@
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/0.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/0.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/0.fuzz: In function ‘std::vector<std::__cxx11::basic_string<char> > split(const string&, const string&)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/0.fuzz:16:36: error: no match for ‘operator==’ (operand types are ‘const string’ {aka ‘const std::__cxx11::basic_string<char>’} and ‘const char’)
+   16 |         if (i!= s.begin() && delim == *i) {
+      |                              ~~~~~ ^~ ~~
+      |                              |        |
+      |                              |        const char
+      |                              const string {aka const std::__cxx11::basic_string<char>}
+In file included from /usr/include/c++/11/bits/stl_algobase.h:67,
+                 from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/ios:40,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/0.fuzz:1:
+/usr/include/c++/11/bits/stl_iterator.h:1122:5: note: candidate: ‘template<class _IteratorL, class _IteratorR, class _Container>  requires requires(_IteratorL __lhs, _IteratorR __rhs) {{__lhs == __rhs} -> decltype(auto) [requires std::convertible_to<<placeholder>, bool>];} constexpr bool __gnu_cxx::operator==(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)’ (reversed)
+ 1122 |     operator==(const __normal_iterator<_IteratorL, _Container>& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/stl_iterator.h:1122:5: note:   template argument deduction/substitution failed:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/0.fuzz:16:40: note:   mismatched types ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’ and ‘const char’
+   16 |         if (i!= s.begin() && delim == *i) {
+      |                                        ^
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz:24:5: error: ‘vector’ does not name a type
+   24 |     vector<Point> points;
+      |     ^~~~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz: In constructor ‘Polygon::Polygon(int)’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz:27:13: error: ‘points’ was not declared in this scope; did you mean ‘Point’?
+   27 |             points.push_back({i, 0});
+      |             ^~~~~~
+      |             Point
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz: In member function ‘void Polygon::print()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/1.fuzz:31:28: error: ‘points’ was not declared in this scope; did you mean ‘Point’?
+   31 |         for(int i = 0; i < points.size(); i++){
+      |                            ^~~~~~
+      |                            Point
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/2.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/2.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/3.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/3.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/4.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/4.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/5.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/5.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/6.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/6.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/7.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/7.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/8.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/8.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/9.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/9.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/10.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/10.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/11.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/11.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/12.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/12.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz: In function ‘int main()’:
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz:5:10: error: cannot bind non-const lvalue reference of type ‘int&’ to an rvalue of type ‘int’
+    5 |     func(0);
+      |          ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz:3:11: note:   initializing argument 1 of ‘void func(int&)’
+    3 | void func(int&);
+      |           ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz:6:10: error: cannot bind non-const lvalue reference of type ‘int&’ to an rvalue of type ‘int’
+    6 |     func(1);
+      |          ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/13.fuzz:3:11: note:   initializing argument 1 of ‘void func(int&)’
+    3 | void func(int&);
+      |           ^~~~
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/14.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/14.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/15.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/15.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz failed validation with error message: /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:4:1: error: ‘p’ does not name a type
+    4 | p = new int;
+      | ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:5:4: error: expected constructor, destructor, or type conversion before ‘=’ token
+    5 | *p = 1;
+      |    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:6:1: error: ‘cout’ does not name a type
+    6 | cout << *p << endl;
+      | ^~~~
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:7:1: error: ‘p’ does not name a type
+    7 | p++;
+      | ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:8:4: error: expected constructor, destructor, or type conversion before ‘=’ token
+    8 | *p = 2;
+      |    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:9:4: error: expected constructor, destructor, or type conversion before ‘=’ token
+    9 | *p = 3;
+      |    ^
+/home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/16.fuzz:10:4: error: expected constructor, destructor, or type conversion before ‘=’ token
+   10 | *p = 4;
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/17.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/17.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/18.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/18.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/19.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/19.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/20.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/20.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/21.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/21.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/22.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/22.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/23.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/23.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/24.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/24.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/25.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/25.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/26.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/26.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/27.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/27.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/28.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/28.fuzz is safe
+[TRACE] Validating /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/29.fuzz ...
+[VERBOSE] /home/aniket.salunke/fuzz4all-cs-final/outputs/search/eval_c10_T1_a3/run_0/29.fuzz is safe

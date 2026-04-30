@@ -1,0 +1,12 @@
+#include <iostream>
+
+#include <math.h>
+#include <stdlib.h>
+
+int main()
+{
+    int newpi = 2 * M_PI;
+
+    std::cout << "Pi * 2: " << newpi << std::endl;
+    return 0;
+}

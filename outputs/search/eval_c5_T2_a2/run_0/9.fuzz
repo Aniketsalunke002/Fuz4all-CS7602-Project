@@ -1,0 +1,20 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+int main() {
+    using namespace std;
+    cout << "Hello World!!!" << endl;
+    return 0;
+}
+ 
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+    ifstream in("myfile.txt");
+    string line;
+    while (getline(in, line)) {
+        cout << line << endl;
+    }
+    return 0;
+}
